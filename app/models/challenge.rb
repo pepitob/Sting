@@ -39,11 +39,11 @@ class Challenge < ApplicationRecord
   #   price = 10
   # end
 
-  def set_challenge_qty
-    weeks = (end_date - start_date)/ 7
-    #(60 * 60 * 24 * 7)
-    challenge_qty = goal_qty * weeks
-  end
+  # def set_challenge_qty
+  #   weeks = (end_date - start_date) / 7
+  #   #(60 * 60 * 24 * 7)
+  #   challenge_qty = goal_qty * weeks
+  # end
 
   # def range_date
   #   date_ranges = Challenge.all.map { |b| b.start_date..b.end_date }
