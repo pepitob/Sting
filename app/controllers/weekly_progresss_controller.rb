@@ -1,2 +1,0 @@
-class WeeklyProgresssController < ApplicationController
-end
