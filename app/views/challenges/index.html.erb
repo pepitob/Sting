@@ -1,0 +1,13 @@
+<h1>My Challenges</h1>
+
+<% @challenges.each do |challenge| %>
+  <div class="card">
+    <h2><%= challenge.name %></h2>
+    <p><%= challenge.type %><%= challenge.challenge_qty %><%= challenge.unit %> per week</p>
+    <% challenge.participations.each do |participation| %>
+      <%= participation.user.name %>
+    <% end %>
+    <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
+    <%# <%= challenge.weekly_progress.balance %>
+  </div>
+<% end %>
