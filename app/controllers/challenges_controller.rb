@@ -1,6 +1,12 @@
 class ChallengesController < ApplicationController
+
+  def index
+    @challenges = policy_scope(Challenge)
+  end
+
   def new
     @challenge = Challenge.new # Needed to instantiate the form_with
+    @participation = Participation.new
   end
 
   def create
@@ -14,7 +20,7 @@ class ChallengesController < ApplicationController
 
   private
 
-  def restaurant_params
+  def challenge_params
     params.require(:challenge).permit(:name, :goal_qty, :start_date, :end_date, :unit, :challenge_qty, :type, :price, :card_num)
   end
 end
