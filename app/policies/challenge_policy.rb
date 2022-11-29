@@ -9,13 +9,13 @@ class ChallengePolicy < ApplicationPolicy
     #   true
     # end
 
-    # def create?
-    #   true
-    # end
+    def create?
+      true
+    end
 
-    # def new?
-    #   true
-    # end
+    def new?
+      true
+    end
 
     # def update?
     #   record.user == user

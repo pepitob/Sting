@@ -6,17 +6,19 @@ class ChallengesController < ApplicationController
   def new
     @challenge = Challenge.new # Needed to instantiate the form_with
     @participation = Participation.new
+    authorize @challenge
   end
 
   def create
     @challenge = Challenge.new(challenge_params)
+    authorize @challenge
     if @challenge.save
       redirect_to challenge_path(@challenge)
     else
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def show
     @challenge = Challenge.find(params[:id])
   end
