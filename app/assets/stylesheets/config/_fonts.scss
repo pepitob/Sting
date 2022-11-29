@@ -1,9 +1,17 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Montserrat:wght@400;663&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cabin+Sketch&family=Montserrat:wght@400;663&display=swap');
+
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
+//$h1-font: 'Cabin Sketch', cursive;
+//$h2-font: 'Amatic SC', cursive;
+
+
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

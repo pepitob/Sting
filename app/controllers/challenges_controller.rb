@@ -1,5 +1,4 @@
 class ChallengesController < ApplicationController
-
   def index
     @challenges = policy_scope(Challenge)
   end
@@ -16,6 +15,10 @@ class ChallengesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+  
+  def show
+    @challenge = Challenge.find(params[:id])
   end
 
   private
