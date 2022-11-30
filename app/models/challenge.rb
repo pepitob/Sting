@@ -10,8 +10,8 @@ class Challenge < ApplicationRecord
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :end_date_after_start_date
-  validates :start_date_after_today
+  validate :end_date_after_start_date
+  validate :start_date_after_today
   validates :goal_qty, presence: true
   validates :type, presence: true, inclusion: { in: TYPES }
   validates :unit, presence: true, inclusion: { in: UNIT }
@@ -39,11 +39,11 @@ class Challenge < ApplicationRecord
   #   price = 10
   # end
 
-  def set_challenge_qty
-    weeks = (end_date - start_date)/ 7
-    #(60 * 60 * 24 * 7)
-    challenge_qty = goal_qty * weeks
-  end
+  # def set_challenge_qty
+  #   weeks = (end_date - start_date) / 7
+  #   #(60 * 60 * 24 * 7)
+  #   challenge_qty = goal_qty * weeks
+  # end
 
   # def range_date
   #   date_ranges = Challenge.all.map { |b| b.start_date..b.end_date }
