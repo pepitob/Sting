@@ -1,6 +1,6 @@
 <div class="card">
   <%= image_tag "stingy.png", alt:"avatar", width:50, height:50 %>
-  <h2>Hello <%= current_user.name %></h2>
+  <h2>Hello <%= current_user.email %></h2>
 </div>
 
 
@@ -10,10 +10,10 @@
 <% @challenges.each do |challenge| %>
   <div class="card">
     <h2><%= challenge.name %></h2>
-    <p><%= challenge.type %><%= challenge.challenge_qty %><%= challenge.unit %> per week</p>
-    <% challenge.participations.each do |participation| %>
-      <%= participation.user.name %>
-    <% end %>
+    <p><%= challenge.category %><%= challenge.challenge_qty %><%= challenge.unit %> per week</p>
+    <%# <% challenge.participations.each do |participation| %>
+      <%# <%= participation.user.name %>
+    <%# <% end %>
     <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
     <%# <%= challenge.weekly_progress.balance %>
   </div>
