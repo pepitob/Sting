@@ -6,9 +6,10 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation = participation.new(participation_params)
-    @participation.challenge = @challenge
-    @participation.user = current_user
+    @participation = Participation.new(user: current_user, challenge: @challenge)
+    # No need for this since I am defining it in the line before
+    # @participation.challenge = @challenge
+    # @participation.user = current_user
     if @participation.save
       redirect_to challenge_path(@challenge)
     else
@@ -22,7 +23,7 @@ class ParticipationsController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
   end
 
-  def particpation_params
-    params.require(:participation).permit(:user_id)
-  end
+  # def particpation_params
+  #   params.require(:participation).permit(:challenge_id)
+  # end
 end
