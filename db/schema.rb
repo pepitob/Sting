@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_175732) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_215937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,12 +32,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175732) do
     t.date "end_date"
     t.float "goal_qty"
     t.string "unit"
-    t.string "type"
+    t.string "category"
     t.float "challenge_qty"
     t.float "price"
     t.integer "card_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -78,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175732) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.string "unit"
     t.date "date"
     t.float "qty"
@@ -90,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175732) do
 
   add_foreign_key "cards", "participations"
   add_foreign_key "cards", "weekly_progresses"
+  add_foreign_key "challenges", "users"
   add_foreign_key "participations", "challenges"
   add_foreign_key "participations", "users"
   add_foreign_key "weekly_progresses", "challenges"
