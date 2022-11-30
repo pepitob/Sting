@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :challenges, only: [:new, :create,:index, :show] do
     resources :participations, only: [:new, :create]
   end
+  resources :users, only: [:show]
 end

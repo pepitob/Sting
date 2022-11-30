@@ -9,4 +9,8 @@ class User < ApplicationRecord
   # has_many :challenges, through: :participations
   # has_many :challenges
 
+  validates :first_name, presence: true, length: { minimum: 2 }
+  validates :last_name, presence: true, length: { minimum: 2 }
+  validates :username, presence: true, length: { minimum: 6 }, uniqueness: true
+  validates :bio, presence: true
 end
