@@ -1,0 +1,7 @@
+<h1>Hola</h1>
+<h2>hola</h2>
+<p>el goal qty cada semana <%= @challenge.goal_qty %></p>
+<p>la cantidad de dias <%= (@challenge.end_date - @challenge.start_date).to_i %></p>
+<p>la cantidad de semanas <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
+<p class="holi"> challenge con formula<%=((@challenge.end_date - @challenge.start_date).to_i/7).round* @challenge.goal_qty %></p>
+<p class="holi"> challengecon modelo<%=@challenge.challenge_qty %></p>

@@ -1,21 +1,21 @@
 class ChallengePolicy < ApplicationPolicy
   class Scope < Scope
-
     def resolve
       scope.where(user: user)
     end
+  end
 
-    # def show?
-    #   true
-    # end
+  def show?
+    true
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def new?
-      true
-    end
+  def new?
+    true
+  end
 
     # def update?
     #   record.user == user
@@ -26,6 +26,4 @@ class ChallengePolicy < ApplicationPolicy
     # def destroy?
     #   record.user == user
     # end
-
-  end
 end
