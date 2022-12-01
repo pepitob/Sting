@@ -1,7 +1,14 @@
-<h1>Hola</h1>
-<h2>hola</h2>
-<p>el goal qty cada semana <%= @challenge.goal_qty %></p>
-<p>la cantidad de dias <%= (@challenge.end_date - @challenge.start_date).to_i %></p>
-<p>la cantidad de semanas <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
-<p class="holi"> challenge con formula<%=((@challenge.end_date - @challenge.start_date).to_i/7).round* @challenge.goal_qty %></p>
-<p class="holi"> challengecon modelo<%=@challenge.challenge_qty %></p>
+<h1><%= @challenge.name %></h1>
+<p class="holi"> challenge qty:<%=@challenge.challenge_qty %></p>
+<p>Week nr: <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
+<p>Week Goal qty <%= @challenge.goal_qty %></p>
+<p><strong>friends</strong></p>
+<%= link_to "send this link", new_challenge_participation_path(@challenge) %>
+<p>Participants</p>
+<ul class="list-group">
+  <% @challenge.participations.each do |participation| %>
+    <li class="list-group-item">
+              <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+      </li>
+  <% end %>
+</ul>
