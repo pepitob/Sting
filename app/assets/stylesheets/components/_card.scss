@@ -3,8 +3,16 @@
   background-color: white;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   padding: 7px 10px;
-  // padding-left: 10px;
-  // padding-right: 10px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 
   border: none;
+}
+
+.card h2 {
+  text-size: 20px;
+  font-family: Amatic SC;
+  color: $dark_blue;
 }
