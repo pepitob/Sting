@@ -1,6 +1,6 @@
 class Challenge < ApplicationRecord
   has_many :participations
-  has_many :weeklyprogresss
+  has_many :weekly_progresses
   has_many :users, through: :participations
   has_many :cards, through: :participations
   belongs_to :user
