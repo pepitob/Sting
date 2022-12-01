@@ -147,13 +147,10 @@ GEM
       sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-
+    hashie (5.0.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-
-    hashie (5.0.0)
-
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -193,6 +190,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
+    openssl (3.0.1)
     orm_adapter (0.5.0)
     pg (1.4.5)
     public_suffix (5.0.0)
@@ -320,6 +318,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  openssl
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
