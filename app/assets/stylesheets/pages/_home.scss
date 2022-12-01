@@ -1,15 +1,35 @@
 
 body {
   background: image-url('background.png');
-
+}
 .stingy-home {
   width: 350px;
+
 }
 
 .home-title {
   text-align: center;
+  padding-top: 20px;
+ h1 {
+  color: #f5c20b;
+  font-size: 100px;
+}
 }
 
-.home-title h1 {
-  font-size: 30px;
+.home-button {
+  text-align: center;
 }
+
+.question {
+  color: white;
+  font-size: 25px;
+  padding: 20px;
+  padding-top: 40px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+// .home-title h1 {
+//   font-size: 60px;
+//   color: #f5c20b;
+// }

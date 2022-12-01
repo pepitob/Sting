@@ -5,14 +5,20 @@
   padding: 7px 10px;
   margin-left: 4px;
   margin-right: 4px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 20px;
 
   border: none;
 }
 
 .card h2 {
   text-size: 20px;
-  font-family: Amatic SC;
+  // font-family: Amatic SC;
   color: $dark_blue;
+}
+
+.avatar-name {
+  text-size: 30px;
+  // font-family: Amatic SC;
+  color: $dark_blue ;
 }
