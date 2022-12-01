@@ -49,13 +49,17 @@ class UsersController < ApplicationController
     )
     @activities = user_client.athlete_activities
     @activities.each do |activity|
-      @workout = Workout.new
-      @workout.category = activity.type
-      @workout.distance = activity.distance
-      @workout.duration = activity.moving_time
-      @workout.date = activity.start_date_local
-      @workout.user = @user
-      @workout.save
+      if Workout.where(activity_id: activity.id).exists?
+      else
+        @workout = Workout.new
+        @workout.category = activity.type
+        @workout.distance = activity.distance
+        @workout.duration = activity.moving_time
+        @workout.date = activity.start_date_local
+        @workout.user = @user
+        @workout.activity_id = activity.id
+        @workout.save!
+      end
     end
   end
 end
