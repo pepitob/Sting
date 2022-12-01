@@ -2,11 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Montserrat:wght@400;663&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cabin+Sketch&family=Montserrat:wght@400;663&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Bebas+Neue&family=Cabin+Sketch&family=Montserrat:wght@400;663&display=swap');
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Cabin Sketch", "Amatic SC", "sans-serif";
+//$headers-font: "Cabin Sketch", "Amatic SC", "sans-serif";
+$headers-font: 'Bebas Neue', cursive;
+
 //$h1-font: 'Cabin Sketch', cursive;
 //$h2-font: 'Amatic SC', cursive;
 

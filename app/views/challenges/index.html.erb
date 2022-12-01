@@ -6,11 +6,21 @@
 
 
 <h1>My Challenges</h1>
-
+<%= link_to "Add new challenge", new_challenge_path %>
 <% @challenges.each do |challenge| %>
   <div class="card">
     <h2><%= challenge.name %></h2>
     <p><%= challenge.category %><%= challenge.challenge_qty %><%= challenge.unit %> per week</p>
+
+    <ul class="list-group">
+      <% challenge.participations.each do |participation| %>
+        <li class="list-group-item">
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+          </li>
+      <% end %>
+    </ul>
+    <%= link_to "challenge detail", challenge_path(challenge) %>
+
     <%# <% challenge.participations.each do |participation| %>
       <%# <%= participation.user.name %>
     <%# <% end %>
