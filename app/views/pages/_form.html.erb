@@ -1,0 +1,11 @@
+<div class="home-form container">
+  <%= simple_form_for [@Challenges] do |f| %>
+    <div class="row">
+      <div class="row"><%= f.input :category %></div>
+    </div>
+      <div class="col"><%= f.input :unit %></div>
+      <div class="col"><%= f.input :qty %></div>
+
+    <div class="d-grid"><%= f.submit "get stung!", class: "btn btn-ghost" %></div>
+  <% end %>
+</div>

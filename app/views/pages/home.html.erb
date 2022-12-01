@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class= "home-title">
+  <h1>Sting</h1>
+  <p>Get strong or get stung</p>
+  <%= image_tag "homepage_stingy.png", class: "stingy-home" %>
+</div>
+
+<div>
+  <h2>How much money are you willing to lose to get moving?</h2>
+  <h2>Invite your friends and steal their earnings</h2>
+  <%# add drop down box here %>
+</div>
+<%# <div>
+  <h2>km/hours</h2>
+  <%# add drop down box here %>
+  <h2>/week</h2>
+  <%# add drop down box here %>
+<%# </div> %>
+<div>
+  <% if current_user %>
+  <%= link_to "Get Stung!", challenges_path, class: "btn btn-ghost"%>
+  <% else %>
+  <%= link_to "Get Stung!", new_user_registration_path(@user), class: "btn btn-ghost" %>
+  <% end %>
+</div>
