@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
 
   def show
+    create_client
     @user = User.find(params[:id])
+    get_user_tokens if params[:code].present?
     authorize @user
     create_redirect_url
+    fetch_workouts if @user.connected_strava
   end
 
   # def destroy
@@ -12,14 +15,16 @@ class UsersController < ApplicationController
   #   redirect_to root_path
   #   # check if root_path is right
   # end
-  def create_redirect_url
-    client = Strava::OAuth::Client.new(
+  def create_client
+    @client = Strava::OAuth::Client.new(
       client_id: "97779",
       client_secret: ENV["STRAVA_CLIENT_SECRET"]
     )
+  end
 
-    @redirect_url = client.authorize_url(
-      redirect_uri: 'http://localhost:3000/users/2',
+  def create_redirect_url
+    @redirect_url = @client.authorize_url(
+      redirect_uri: 'http://localhost:3000/users/1',
       approval_prompt: 'force',
       response_type: 'code',
       scope: 'activity:read_all',
@@ -28,6 +33,30 @@ class UsersController < ApplicationController
   end
 
   def get_user_tokens
-    response = client.oauth_token(code: '5b898e8874fbb1f98ef2f470159a4033eb1738d7')
+    code = params[:code]
+    response = @client.oauth_token(code: code)
+    @user.access_token = response.access_token
+    @user.refresh_token = response.access_token
+    @user.token_expires_at = response.expires_at
+    @user.athlete_id = response.athlete.id
+    @user.connected_strava = true
+    @user.save
+  end
+
+  def fetch_workouts
+    user_client = Strava::Api::Client.new(
+      access_token: @user.access_token
+    )
+    @activities = user_client.athlete_activities
+    @activities.each do |activity|
+      @workout = Workout.new
+      @workout.category = activity.type
+      @workout.distance = activity.distance
+      @workout.duration = activity.moving_time
+      @workout.date = activity.start_date_local
+      @workout.qty = activity.distance
+      @workout.user = @user
+      @workout.save
+    end
   end
 end
