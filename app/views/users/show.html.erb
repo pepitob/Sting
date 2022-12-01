@@ -4,6 +4,7 @@
 </div>
 <div class= "card">
   <h2>BIO</h2>
+
   <p><%= @user.bio %></p>
 </div>
 <div class= "card">
@@ -21,3 +22,5 @@
 
 
 <%# if @user == current user, then show  %>
+
+<%= link_to image_tag("btn_strava_connectwith_orange.png"), @redirect_url  %>
