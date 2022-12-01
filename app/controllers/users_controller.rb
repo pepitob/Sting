@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def create_redirect_url
     @redirect_url = @client.authorize_url(
-      redirect_uri: 'http://localhost:3000/users/1',
+      redirect_uri: "http://localhost:3000/users/#{params[:id]}",
       approval_prompt: 'force',
       response_type: 'code',
       scope: 'activity:read_all',
@@ -54,7 +54,6 @@ class UsersController < ApplicationController
       @workout.distance = activity.distance
       @workout.duration = activity.moving_time
       @workout.date = activity.start_date_local
-      @workout.qty = activity.distance
       @workout.user = @user
       @workout.save
     end
