@@ -1,4 +1,7 @@
-// Specific CSS for your home-page
+
+body {
+  background: image-url('background.png');
+
 .stingy-home {
   width: 350px;
 }
@@ -9,5 +12,4 @@
 
 .home-title h1 {
   font-size: 30px;
-
 }
