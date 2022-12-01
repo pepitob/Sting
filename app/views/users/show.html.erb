@@ -27,6 +27,8 @@
 
 <% @user.workouts.each do |workout| %>
   <%= workout.category %>
-  <%= workout.qty %>
+  <%= workout.distance %>
+  <%= workout.duration %>
   <%= workout.date %>
+  <br>
 <% end %>
