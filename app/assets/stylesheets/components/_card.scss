@@ -7,8 +7,10 @@
   margin-right: 4px;
   margin-top: 8px;
   margin-bottom: 20px;
-
   border: none;
+  a{
+    text-decoration: none;
+  }
 }
 
 .card h2 {
@@ -23,6 +25,7 @@
   color: $dark_blue ;
 }
 
+//challenge index 1st card
 .welcome-mesage{
   display: flex;
   flex-direction: row;
@@ -42,14 +45,16 @@
 
 }
 
+//challenge index challenge cards
 .challenge{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 
   .progress{
     align-self: center;
     width: 30%;
-    height: 200px;
+    height: 150px;
     align-items: center;
     background-color: white;
     margin-right: 3px;
@@ -60,6 +65,7 @@
 
   }
   .challenge-summary{
+    margin-left: 2px;
     h2{
       font-size: 20px;
     }
@@ -67,4 +73,21 @@
       color: grey;
     }
   }
+
+}
+
+.list-group{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+//show page share link
+.share{
+  a{
+    text-decoration: none;
+    color:grey;
+  }
+
+  text-align:right;
 }
