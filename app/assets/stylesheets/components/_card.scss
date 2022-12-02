@@ -13,17 +13,17 @@
 
   p {
     color: black;
-  }
+
   border: none;
     a{
-    text-decoration: none;
+      text-decoration: none;
 
     }
-
+  }
 }
 
 .card h2 {
-  text-size: 20px;
+  font-size: 20px;
   // font-family: Amatic SC;
   color: $dark_blue;
 }
@@ -31,7 +31,7 @@
 
 
 .avatar-name {
-  text-size: 30px;
+  font-size: 30px;
   // font-family: Amatic SC;
   color: $dark_blue ;
 }
