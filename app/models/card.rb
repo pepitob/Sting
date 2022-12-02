@@ -1,7 +1,6 @@
 class Card < ApplicationRecord
   belongs_to :participation
   belongs_to :weekly_progress
-  belongs_to :user, through: :participation
   # before_save :set_value, :set_action
 
   # def set_value

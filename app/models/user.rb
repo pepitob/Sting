@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :participations, dependent: :destroy
-  has_many :weeklyprogresss, dependent: :destroy
+  has_many :weekly_progresses, dependent: :destroy
   has_many :workouts, dependent: :destroy
   has_many :challenges, through: :participations
   has_one_attached :photo
