@@ -15,32 +15,33 @@
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="center-element"><h1>Your <span class="yellow-border-font">Challenges</span></h1></div>
-      <div class="background-color-blue"><%= link_to "Add new challenge", new_challenge_path%></div>
+      <div class="background-color-black"><%= link_to "Add new challenge", new_challenge_path%></div>
       <% @challenges.each do |challenge| %>
-      <div class="card">
-        <div class="challenge">
-          <div class="progress"><%= image_tag "goal_circle.png" %></div>
-          <div class="challenge-summary">
-            <h2><%= challenge.name %></h2>
-            <p><%= challenge.category %><%= challenge.challenge_qty %><%= challenge.unit %> per week</p>
-            <ul class="list-group">
-              <% challenge.participations.each do |participation| %>
-                <li class="list-group-item">
-                          <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
-                  </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <%= link_to "challenge detail", challenge_path(challenge) %>
+        <div class="card">
+          <%= link_to challenge_path(challenge) do %>
+            <div class="challenge">
+              <div class="progress"><%= image_tag "goal_circle.png" %></div>
+              <div class="challenge-summary">
+                <h2 class="center-element"><%= challenge.name %></h2>
+                <p><%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> per week</p>
+                <div class="list-group">
+                  <% challenge.participations.each do |participation| %>
+                    <%# <div class="list-group-item"> %>
+                      <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+                    <%# </div> %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
 
-        <%# <% challenge.participations.each do |participation| %>
-          <%# <%= participation.user.name %>
-        <%# <% end %>
-        <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
-        <%# <%= challenge.weekly_progress.balance %>
-      </div>
+            <%# <% challenge.participations.each do |participation| %>
+              <%# <%= participation.user.name %>
+            <%# <% end %>
+            <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
+            <%# <%= challenge.weekly_progress.balance %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
+
   </div>
 </div>

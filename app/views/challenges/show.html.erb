@@ -1,14 +1,36 @@
-<h1><%= @challenge.name %></h1>
-<p class="holi"> challenge qty:<%=@challenge.challenge_qty %></p>
-<p>Week nr: <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
-<p>Week Goal qty <%= @challenge.goal_qty %></p>
-<p><strong>friends</strong></p>
-<%= link_to "send this link", new_challenge_participation_path(@challenge) %>
-<p>Participants</p>
-<ul class="list-group">
-  <% @challenge.participations.each do |participation| %>
-    <li class="list-group-item">
+<div class = "container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+    <div class="center-element">
+      <h1 class="background-color-black"><%= @challenge.name %></h1>
+      <%# <p>Week nr: <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
+      <div><h2><span class="yellow-border-font">Challenge </span> Goal: <span class=""><%=@challenge.challenge_qty %> <%=@challenge.unit%></span></h2></div>
+      <p>This Week Goal:  <%= @challenge.goal_qty%> <%=@challenge.unit%></p>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-center">
+    <div class ="col-12">
+      <div class="card">
+        <h2 class="center-element">Progress</h2>
+
+
+      </div>
+
+      <div class="card">
+        <div class="list-group">
+          <% @challenge.participations.each do |participation| %>
               <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
-      </li>
-  <% end %>
-</ul>
+          <% end %>
+        </div>
+        <div class="share"><%= link_to new_challenge_participation_path(@challenge) do %><i class="fa-solid fa-link"></i><% end %></div>
+
+      </div>
+      <div class="card">
+        <h2>Here goes our feed :)</h2>
+      </div>
+    </div>
+  </div>
+</div>
