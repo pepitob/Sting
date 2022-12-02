@@ -7,9 +7,17 @@
   margin-right: 4px;
   margin-top: 8px;
   margin-bottom: 20px;
+
+  color: black;
+  border: none;
+
+  p {
+    color: black;
+
   border: none;
   a{
     text-decoration: none;
+
   }
 }
 
@@ -19,6 +27,8 @@
   color: $dark_blue;
 }
 
+
+=======
 .avatar-name {
   text-size: 30px;
   // font-family: Amatic SC;
@@ -26,6 +36,7 @@
 }
 
 //challenge index 1st card
+
 .welcome-mesage{
   display: flex;
   flex-direction: row;
