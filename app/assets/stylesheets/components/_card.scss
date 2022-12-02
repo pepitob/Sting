@@ -7,20 +7,18 @@
   margin-right: 4px;
   margin-top: 8px;
   margin-bottom: 20px;
-
+  color: black;
   border: none;
+
+  p {
+    color: black;
+  }
 }
 
 .card h2 {
   text-size: 20px;
   // font-family: Amatic SC;
   color: $dark_blue;
-}
-
-.avatar-name {
-  text-size: 30px;
-  // font-family: Amatic SC;
-  color: $dark_blue ;
 }
 
 .welcome-mesage{
