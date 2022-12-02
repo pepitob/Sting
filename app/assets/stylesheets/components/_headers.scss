@@ -1,0 +1,36 @@
+.yellow-border-font {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #f1bf0a;
+  text-align: center;
+}
+
+.background-color-grey {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #28292e;
+  color: #fafafa;
+  //font-size: 60px;
+  //line-height: 70px;
+}
+
+.center-element{
+  text-align: center;
+  h1{
+    font-size: 50px;
+  }
+}
+
+
+.background-color-blue {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: black;
+  color: #fafafa;
+  a{
+    text-decoration: none;
+    color: #fafafa;
+    font-family: 'Bebas Neue', cursive;
+  }
+  //font-size: 60px;
+  //line-height: 70px;
+}

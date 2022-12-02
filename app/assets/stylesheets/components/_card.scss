@@ -22,3 +22,49 @@
   // font-family: Amatic SC;
   color: $dark_blue ;
 }
+
+.welcome-mesage{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .user-pic{
+    align-self: center;
+  }
+  .user-summary{
+    margin-bottom: 0;
+    h2{
+      font-size: 20px;
+    }
+    p{
+      color: grey;
+    }
+  }
+
+}
+
+.challenge{
+  display: flex;
+  flex-direction: row;
+
+  .progress{
+    align-self: center;
+    width: 30%;
+    height: 200px;
+    align-items: center;
+    background-color: white;
+    margin-right: 3px;
+    img{
+      width:100px;
+      height: 100px;
+    }
+
+  }
+  .challenge-summary{
+    h2{
+      font-size: 20px;
+    }
+    p{
+      color: grey;
+    }
+  }
+}
