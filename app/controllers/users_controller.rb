@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     create_client
     @user = User.find(params[:id])
-    get_user_tokens if params[:code].present?
+    # get_user_tokens if params[:code].present?
     authorize @user
     create_redirect_url
     # fetch_workouts if @user.connected_strava
