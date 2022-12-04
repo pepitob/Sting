@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-
+<%# Challenges cards %>
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="center-element"><h1 style="color=white;">Your <span class="yellow-border-font">Challenges</span></h1></div>
@@ -20,17 +20,19 @@
         <div class="card">
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
-              <div class="progress"><%= image_tag "goal_circle.png" %></div>
+              <%# Circle progress in js %>
+              <div data-controller="chart" class="progress" data-chart-target="graph">
+                <%= tag.div  data: { chart_target: "progress", value: challenge.price} %>
+              </div>
+
               <div class="challenge-summary">
                 <h2 class="center-element"><%= challenge.name %></h2>
                 <p><%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> per week</p>
                 <div class="list-group">
                   <% challenge.participations.each do |participation| %>
-                    <%# <div class="list-group-item"> %>
                       <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                         <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
                       </div>
-                    <%# </div> %>
                   <% end %>
                 </div>
               </div>
