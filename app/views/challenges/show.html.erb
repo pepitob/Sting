@@ -22,7 +22,9 @@
       <div class="card">
         <div class="list-group">
           <% @challenge.participations.each do |participation| %>
+            <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
               <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+            </div>
           <% end %>
         </div>
 
@@ -46,7 +48,6 @@
            <i class="fa-solid fa-link"></i>
           <% end %>
         </div>
-
 
       </div>
       <div class="card">

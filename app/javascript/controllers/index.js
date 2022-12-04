@@ -10,5 +10,5 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import Clipboard from 'stimulus-clipboard'
-application.register('clipboard', Clipboard)
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)
