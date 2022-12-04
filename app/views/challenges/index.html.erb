@@ -21,7 +21,7 @@
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
               <%# Circle progress in js %>
-              <div data-controller="chart" class="progress" data-chart-target="graph">
+              <div data-controller="chart" class="circle-prog" data-chart-target="graph">
                 <%= tag.div  data: { chart_target: "progress", value: challenge.price} %>
               </div>
 

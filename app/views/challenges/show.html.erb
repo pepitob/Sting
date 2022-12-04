@@ -10,12 +10,27 @@
     </div>
   </div>
 
-
+ <%# Progress bars with avatars bootstrap %>
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="card">
         <h2 class="center-element">Progress</h2>
+        <% @challenge.participations.each do |participation| %>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+              role="progressbar"
+              aria-label="Animated striped example"
+              aria-valuenow="<%= participation.challenge.goal_qty / participation.challenge.challenge_qty * 100%>%"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:<%= participation.challenge.goal_qty / participation.challenge.challenge_qty * 100%>%">
+                <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
+              </div>
+          </div>
+        <% end %>
       </div>
+
+
 
      <%# Circle progress in js %>
 
