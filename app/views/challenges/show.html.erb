@@ -25,7 +25,28 @@
               <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
           <% end %>
         </div>
-        <div class="share"><%= link_to new_challenge_participation_path(@challenge) do %><i class="fa-solid fa-link"></i><% end %></div>
+
+        <%# <div data-controller="clipboard" data-clipboard-success-content="Copied!">
+          <input type="text" value="Click the button to copy me!" data-clipboard-target="source" />
+           <button type="button" data-action="clipboard#copy" data-clipboard-target="button">Copy to clipboard</button>
+        </div> %>
+        <%# <div data-controller="clipboard"  class="share">
+          <input data-clipboard-target="source" type="text" value= "<%=new_challenge_participation_path(@challenge)%>
+          <%# <button data-action="clipboard#copy"><i  class="fa-solid fa-link"></i></button>
+        </div> %>
+
+        <%# <div data-controller="clipboard" data-action="click->clipboard#copy"  data-clipboard-target="button" >
+          <%= data-clipboard-target="source" link_to new_challenge_participation_path(@challenge) do%>
+          <%# <i  class="fa-solid fa-link"></i>
+          <% end %>
+        <%# </div> %>
+
+        <div class="share">
+          <%= link_to new_challenge_participation_path(@challenge) do%>
+           <i class="fa-solid fa-link"></i>
+          <% end %>
+        </div>
+
 
       </div>
       <div class="card">
