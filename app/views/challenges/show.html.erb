@@ -15,15 +15,20 @@
     <div class ="col-12">
       <div class="card">
         <h2 class="center-element">Progress</h2>
-
-
       </div>
+
+     <%# Circle progress in js %>
+
 
       <div class="card">
         <div class="list-group">
           <% @challenge.participations.each do |participation| %>
-            <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
-              <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+            <div data-controller="chart" class="imgfondo" data-chart-target="graph">
+              <%= tag.div  data: { chart_target: "progress", value: participation.user.id} do %>
+                <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
