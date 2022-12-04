@@ -15,8 +15,3 @@ application.register("tooltip", TooltipController)
 
 import ChartController from "./chart_controller"
 application.register('chart', ChartController)
-
-// const cp = new CircleProgress('.progress', {
-//   value: 20,
-//   max: 100,
-// })
