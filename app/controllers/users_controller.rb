@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   #   redirect_to root_path
   #   # check if root_path is right
   # end
+
   def create_client
     @client = Strava::OAuth::Client.new(
       client_id: "97779",
@@ -24,7 +25,8 @@ class UsersController < ApplicationController
 
   def create_redirect_url
     @redirect_url = @client.authorize_url(
-      redirect_uri: "https://www.stingfit.live/users/#{params[:id]}?",
+      redirect_uri: "http://localhost:3000/users/#{params[:id]}",
+      # redirect_uri: "https://www.stingfit.live/users/#{params[:id]}",
       approval_prompt: 'force',
       response_type: 'code',
       scope: 'activity:read_all',
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
     code = params[:code]
     response = @client.oauth_token(code: code)
     @user.access_token = response.access_token
-    @user.refresh_token = response.access_token
+    @user.refresh_token = response.refresh_token
     @user.token_expires_at = response.expires_at
     @user.athlete_id = response.athlete.id
     @user.connected_strava = true
@@ -44,6 +46,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_workouts
+    refresh_tokens if DateTime.now() > @user.token_expires_at
     user_client = Strava::Api::Client.new(
       access_token: @user.access_token
     )
@@ -61,5 +64,16 @@ class UsersController < ApplicationController
         @workout.save!
       end
     end
+  end
+
+  def refresh_tokens
+    response = @client.oauth_token(
+      refresh_token: @user.refresh_token,
+      grant_type: 'refresh_token'
+    )
+    @user.access_token = response.access_token
+    @user.refresh_token = response.refresh_token
+    @user.token_expires_at = response.expires_at
+    @user.save!
   end
 end
