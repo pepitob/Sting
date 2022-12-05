@@ -9,3 +9,9 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)
+
+import ChartController from "./chart_controller"
+application.register('chart', ChartController)

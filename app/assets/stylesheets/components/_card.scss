@@ -13,13 +13,13 @@
 
   p {
     color: black;
-
+  }
   border: none;
     a{
       text-decoration: none;
 
     }
-  }
+
 }
 
 .card h2 {
@@ -63,17 +63,13 @@
   flex-direction: row;
   justify-content: space-between;
 
-  .progress{
+  .circle-prog{
     align-self: center;
     width: 30%;
     height: 150px;
     align-items: center;
     background-color: white;
     margin-right: 3px;
-    img{
-      width:100px;
-      height: 100px;
-    }
 
   }
   .challenge-summary{
