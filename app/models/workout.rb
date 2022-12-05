@@ -7,6 +7,7 @@ class Workout < ApplicationRecord
 
   def self.fetch_workouts
     User.where(connected_strava: true).each do |user|
+      @participations = user.participations
       refresh_tokens(user) if DateTime.now() > user.token_expires_at
       user_client = Strava::Api::Client.new(
         access_token: user.access_token
@@ -23,6 +24,17 @@ class Workout < ApplicationRecord
           @workout.user = user
           @workout.activity_id = activity.id
           @workout.save!
+          @participations.each do |participation|
+            week_num =  (((Date.today - participation.challenge.start_date).to_i / 7) + 1)
+            @weekly_progress = WeeklyProgress.find_by(user: user, week_num: week_num, challenge: participation.challenge)
+            if @weekly_progress.unit == "Km"
+              @weekly_progress.progress += @workout.distance
+              @weekly_progress.save
+            elsif @weekly_progress.unit == "Hours"
+              @weekly_progress.progress += @workout.duration
+              @weekly_progress.save
+            end
+          end
         end
       end
     end
@@ -41,9 +53,5 @@ class Workout < ApplicationRecord
     user.refresh_token = response.refresh_token
     user.token_expires_at = response.expires_at
     user.save!
-  end
-
-  def check_category
-    ["Run", "Walk", "Ride", "Swim"]
   end
 end

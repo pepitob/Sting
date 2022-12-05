@@ -5,7 +5,7 @@ class Challenge < ApplicationRecord
   has_many :cards, through: :participations
   belongs_to :user
 
-  CATEGORY = ["Running", "Walking", "Swimming", "Biking"]
+  CATEGORY = ["Run", "Walk", "Ride", "Swim"]
   UNIT = ["Km", "Hours"]
   CARDS = (0..5).to_a
   validates :name, presence: true
