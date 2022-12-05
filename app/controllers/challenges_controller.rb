@@ -35,7 +35,13 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     authorize @challenge
     # I can add participants in the show view
-    @participation = Participation.new
+    # @participation = Participation.new
+    # @total_progress = WeeklyProgress.sum(:progress)
+    # @weekly_progress = WeeklyProgress.find_by(challenge: @challenge)
+    # @total_progress = @weekly_progress.sum(:progress)
+
+
+
   end
 
   private
@@ -47,4 +53,6 @@ class ChallengesController < ApplicationController
   def participation_params
     params.require(:participation).permit(:user_id)
   end
+
+
 end
