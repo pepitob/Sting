@@ -83,3 +83,5 @@ gem "pundit"
 gem "cloudinary"
 gem 'strava-ruby-client'
 
+gem 'strava-ruby-client'
+gem 'openssl'

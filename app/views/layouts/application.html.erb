@@ -11,7 +11,10 @@
     <%= favicon_link_tag asset_path('stingy.png') %>
   </head>
 
-  <body><%= render "shared/navbar" %>
+  <body>
+    <% unless action_name == "home" %>
+       <%= render 'shared/navbar' %>
+    <% end %>
 <%= render "shared/flashes" %>
 
     <%= yield %>

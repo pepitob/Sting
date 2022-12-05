@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :participations, dependent: :destroy
-  has_many :weeklyprogresss, dependent: :destroy
+  has_many :weekly_progresses, dependent: :destroy
   has_many :workouts, dependent: :destroy
   has_many :challenges, through: :participations
   has_one_attached :photo
@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 2 }
   validates :username, presence: true, length: { minimum: 6 }, uniqueness: true
   validates :bio, presence: true
+  validates :photo, presence: true
 end

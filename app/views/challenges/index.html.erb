@@ -1,20 +1,51 @@
-<div class="card">
-  <%= image_tag "stingy.png", alt:"avatar", width:50, height:50 %>
-  <h2>Hello <%= current_user.email %></h2>
-</div>
-
-
-
-<h1>My Challenges</h1>
-
-<% @challenges.each do |challenge| %>
-  <div class="card">
-    <h2><%= challenge.name %></h2>
-    <p><%= challenge.category %><%= challenge.challenge_qty %><%= challenge.unit %> per week</p>
-    <%# <% challenge.participations.each do |participation| %>
-      <%# <%= participation.user.name %>
-    <%# <% end %>
-    <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
-    <%# <%= challenge.weekly_progress.balance %>
+<div class = "container">
+  <div class="row justify-content-center">
+    <div class="col-12 ">
+      <div class="card welcome-mesage">
+        <div class="user-pic"><%= cl_image_tag current_user.photo.key, class:"avatar-large" %></div>
+        <div class="user-summary">
+          <h2>Hello <%= current_user.first_name %>!</h2>
+          <p>100$ total balance</p>
+          <p>14km Run this week</p>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+<%# Challenges cards %>
+  <div class="row justify-content-center">
+    <div class ="col-12">
+      <div class="center-element"><h1 style="color=white;">Your <span class="yellow-border-font">Challenges</span></h1></div>
+      <div class="background-color-black"><%= link_to "Add new challenge", new_challenge_path%></div>
+      <% @challenges.each do |challenge| %>
+        <div class="card">
+          <%= link_to challenge_path(challenge) do %>
+            <div class="challenge">
+              <%# Circle progress in js %>
+              <div data-controller="chart" class="circle-prog" data-chart-target="graph">
+                <%= tag.div  data: { chart_target: "progress", value: challenge.price} %>
+              </div>
+
+              <div class="challenge-summary">
+                <h2 class="center-element"><%= challenge.name %></h2>
+                <p><%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> per week</p>
+                <div class="list-group">
+                  <% challenge.participations.each do |participation| %>
+                      <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
+                        <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+                      </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <%# <% challenge.participations.each do |participation| %>
+              <%# <%= participation.user.name %>
+            <%# <% end %>
+            <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
+            <%# <%= challenge.weekly_progress.balance %>
+          <% end %>
+        </div>
+      <% end %>
+
+  </div>
+</div>

@@ -1,7 +1,107 @@
-<h1>Hola</h1>
-<h2>hola</h2>
-<p>el goal qty cada semana <%= @challenge.goal_qty %></p>
-<p>la cantidad de dias <%= (@challenge.end_date - @challenge.start_date).to_i %></p>
-<p>la cantidad de semanas <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
-<p class="holi"> challenge con formula<%=((@challenge.end_date - @challenge.start_date).to_i/7).round* @challenge.goal_qty %></p>
-<p class="holi"> challengecon modelo<%=@challenge.challenge_qty %></p>
+<div class = "container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+    <div class="center-element">
+      <h1 class="background-color-black"><%= @challenge.name %></h1>
+      <%# <p>Week nr: <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
+      <div><h2><span class="yellow-border-font">Challenge </span> Goal: <span class=""><%=@challenge.challenge_qty %> <%=@challenge.unit%></span></h2></div>
+      <p>This Week Goal:  <%= @challenge.goal_qty%> <%=@challenge.unit%></p>
+    </div>
+    </div>
+  </div>
+
+ <%# Progress bars with avatars bootstrap %>
+  <div class="row justify-content-center">
+    <div class ="col-12">
+      <div class="card">
+        <h2 class="center-element">Progress</h2>
+        <% @challenge.participations.each do |participation| %>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+              role="progressbar"
+              aria-label="Animated striped example"
+              aria-valuenow="<%= participation.challenge.goal_qty / participation.challenge.challenge_qty * 100%>%"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:<%= participation.challenge.goal_qty / participation.challenge.challenge_qty * 100%>%">
+                <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
+              </div>
+          </div>
+        <% end %>
+      </div>
+
+
+
+     <%# Circle progress in js %>
+
+
+      <div class="card">
+        <div class="list-group">
+          <% @challenge.participations.each do |participation| %>
+            <div data-controller="chart" class="imgfondo" data-chart-target="graph">
+              <%= tag.div  data: { chart_target: "progress", value: participation.user.id} do %>
+                <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <%# <div data-controller="clipboard" data-clipboard-success-content="Copied!">
+          <input type="text" value="Click the button to copy me!" data-clipboard-target="source" />
+           <button type="button" data-action="clipboard#copy" data-clipboard-target="button">Copy to clipboard</button>
+        </div> %>
+        <%# <div data-controller="clipboard"  class="share">
+          <input data-clipboard-target="source" type="text" value= "<%=new_challenge_participation_path(@challenge)%>
+          <%# <button data-action="clipboard#copy"><i  class="fa-solid fa-link"></i></button>
+        </div> %>
+
+        <%# <div data-controller="clipboard" data-action="click->clipboard#copy"  data-clipboard-target="button" >
+          <%= data-clipboard-target="source" link_to new_challenge_participation_path(@challenge) do%>
+          <%# <i  class="fa-solid fa-link"></i>
+          <% end %>
+        <%# </div> %>
+
+        <div class="share">
+          <%= link_to new_challenge_participation_path(@challenge) do%>
+           <i class="fa-solid fa-link"></i>
+          <% end %>
+        </div>
+      </div>
+
+
+
+      <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Your cards
+        </button>
+      </p>
+      <%# hiding cards %>
+      <div class="collapse" id="collapseExample">
+        <%# Adding flipping cards %>
+        <div class="card card-body">
+          <h2>Your cards</h2>
+          <%# Each card %>
+          <div class="flip-box">
+            <div class="flip-box-inner">
+              <div class="flip-box-front">
+                <%= image_tag "stingy.png", alt: "StingyCard", class:"StingyCard" %>
+              </div>
+              <div class="flip-box-back">
+                <%= image_tag "homepage_stingy.png", alt: "CardValue", class:"CardValue" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <h2>Here goes our feed :)</h2>
+      </div>
+
+    </div>
+  </div>
+</div>

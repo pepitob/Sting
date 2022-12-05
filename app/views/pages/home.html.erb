@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class= "home-title">
+  <h1>Sting</h1>
+  <h2>Get <strong>strong</strong> or get <strong>stung</strong></h2>
+  <%= image_tag "homepage_stingy.png", class: "stingy-home" %>
+</div>
+
+<div class= "home-button">
+  <% if current_user %>
+  <%= link_to "Get Stung!", challenges_path, class: "btn btn-ghost"%>
+  <% else %>
+  <%= link_to "Get Stung!", new_user_registration_path(@user), class: "btn btn-ghost" %>
+  <% end %>
+</div>
+
+<div class= " question">
+  <h2>How much money are you</h2>
+  <h2>willing to lose to get fit?</h2>
+</div>
