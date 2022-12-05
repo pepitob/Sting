@@ -15,3 +15,6 @@ application.register("tooltip", TooltipController)
 
 import ChartController from "./chart_controller"
 application.register('chart', ChartController)
+
+import ScrollReveal from 'stimulus-scroll-reveal'
+application.register('scroll-reveal', ScrollReveal)
