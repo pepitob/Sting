@@ -1,0 +1,23 @@
+.circle-progress-value {
+	stroke-width: 6px;
+	stroke: hsl(320, 80%, 60%);
+	stroke-dasharray: 25 5;
+}
+.circle-progress-circle {
+	stroke-width: 6px;
+	stroke: #eee;
+}
+.circle-progress-text {
+	font-weight: bold;
+  font-size: larger;
+	fill: hsl(180, 80%, 47%);
+}
+
+
+.imgfondo{
+
+  .circle-progress-text {
+    fill: none;
+  }
+
+}
