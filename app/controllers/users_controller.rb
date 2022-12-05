@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   #   redirect_to root_path
   #   # check if root_path is right
   # end
+
   def create_client
     @client = Strava::OAuth::Client.new(
       client_id: "97779",
@@ -66,12 +67,13 @@ class UsersController < ApplicationController
   end
 
   def refresh_tokens
-    response = client.oauth_token(
+    response = @client.oauth_token(
       refresh_token: @user.refresh_token,
       grant_type: 'refresh_token'
     )
     @user.access_token = response.access_token
     @user.refresh_token = response.refresh_token
     @user.token_expires_at = response.expires_at
+    @user.save!
   end
 end
