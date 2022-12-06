@@ -2,9 +2,7 @@ class Participation < ApplicationRecord
   belongs_to :challenge
   belongs_to :user
   has_many :cards
-  after_create :create_weekly_progresses
-  after_create :create_cards
-
+  after_create :create_weekly_progresses, :create_cards
 
   def create_weekly_progresses
     challenge.week_count.times do |i|
@@ -25,10 +23,7 @@ class Participation < ApplicationRecord
 
   def create_cards
     challenge.card_num.times do
-      card = Card.new
-      card.value = set_value
-      card.action = set_action
-      card.save!
+      Card.create(participation_id: id)
     end
   end
 

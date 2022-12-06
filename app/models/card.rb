@@ -1,16 +1,17 @@
 class Card < ApplicationRecord
   belongs_to :participation
   belongs_to :weekly_progress
+  after_create :set_card
 
-  def set_value
-    [-0.1, -0.2, -0.35, 0.1, 0.2, 0.35].sample
-  end
+  private
 
-  def set_action
-    if value.negative
-      "Sting progress"
+  def set_card
+    self.used = false
+    self.value = [-0.1, -0.2, -0.35, 0.1, 0.2, 0.35].sample
+    if value.negative?
+      self.action = "Mad Stingy"
     else
-      "Flow progress"
+      self.action = "Stingy"
     end
   end
 

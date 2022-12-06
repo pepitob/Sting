@@ -2,7 +2,7 @@ class Challenge < ApplicationRecord
   has_many :participations
   has_many :weekly_progresses
   has_many :participants, through: :participations, class_name: :user
-  has_many :cards, through: :participations
+  # has_many :cards, through: :participations
   belongs_to :user
 
   CATEGORY = ["Run", "Walk", "Ride", "Swim"]
@@ -42,12 +42,15 @@ class Challenge < ApplicationRecord
   def is_update_day
     return true  if Date.today == end_date + 1
     return false if current_week == 1
+
     (((Date.today - start_date).to_i - 1) % 7).zero?
   end
+
   private
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
+
     if end_date < start_date
       errors.add(:end_date, "Must be after the start date")
     end

@@ -5,22 +5,22 @@
       <%= simple_form_for @challenge do |f| %>
         <%= f.input :name, as: :string, label: "Challenge Name", placeholder: "Team Sting Running Club" %>
         <div class="mb-2">
-        <%= f.select :category, collection: Challenge::CATEGORY, class: "form-dropdown"%>
+          <%= f.select :category, collection: Challenge::CATEGORY, class: "form-dropdown"%>
         </div>
         <%= f.input :goal_qty, as: :float , label: "How many Km or Hours per week?", placeholder: "10"%>
         <div class="mb-2">
-        <%= f.select :unit, collection: Challenge::UNIT%>
+          <%= f.select :unit, collection: Challenge::UNIT%>
         </div>
         <%# the usernames of your friends %>
         <%= f.input :start_date, as: :string, input_html: { data: { controller: "flatpickr" } }%></div>
         <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } }%></div>
         <%= f.input :price, as: :float, label: "How much money are you willing to lose?", placeholder: "30"%>
         <div class="mb-2">
-        <%= f.select :card_num, collection: Challenge::CARDS, class: "form-dropdown" %>
+          <%= f.select :card_num, collection: Challenge::CARDS, class: "form-dropdown" %>
         </div>
         <br>
         <div class="text-center m-5">
-        <%= f.submit "Create Challenge!", class: 'btn btn-ghost' %>
+          <%= f.submit "Create Challenge!", class: 'btn btn-ghost' %>
         </div>
       <% end %>
     </div>
