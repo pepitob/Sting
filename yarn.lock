@@ -712,6 +712,7 @@ stimulus-clipboard@^3.2.2:
   resolved "https://registry.npmjs.org/stimulus-clipboard/-/stimulus-clipboard-3.2.2.tgz"
   integrity sha512-J/dCoyxL+hItBQrI6TkiBR+WkRXiSNPJw8hBRZtvdAOL/iXGm88nTOCKoU0T1tFlGcy1ODX0uyjxWgCKvNhFRw==
 
+
 stimulus-scroll-reveal@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/stimulus-scroll-reveal/-/stimulus-scroll-reveal-3.0.0.tgz#0081591b0e4fc03963f7ae33d653ac4aeb73c4fc"
