@@ -4,15 +4,57 @@
   <%= image_tag "homepage_stingy.png", class: "stingy-home" %>
 </div>
 
+<div></div>
+
 <div class= "home-button">
   <% if current_user %>
   <%= link_to "Get Stung!", challenges_path, class: "btn btn-ghost"%>
   <% else %>
-  <%= link_to "Get Stung!", new_user_registration_path(@user), class: "btn btn-ghost" %>
+  <%= link_to "Get Stung!", new_user_session_path(@user), class: "btn btn-ghost" %>
   <% end %>
 </div>
 
-<div class= " question">
+<div class= "question">
   <h2>How much money are you</h2>
   <h2>willing to lose to get fit?</h2>
 </div>
+
+<div >
+
+</div data-controller="scroll-reveal">
+  <p  class="reveal">Scroll Down to Learn How to Play!</p>
+  <p data-scroll-reveal-target="item" class="reveal" data-delay="250ms">World!</p>
+</div>
+
+<div  data-controller="scroll-reveal" class= "container">
+  <div class= "reveal" data-scroll-reveal-target="item" data-delay="250ms">
+    <%= image_tag "homepage_step1.png", class: "steps" %>
+  </div>
+</div>
+<div data-controller="scroll-reveal" class= "container">
+  <div class= "reveal" data-scroll-reveal-target="item" data-delay="250ms">
+    <%= image_tag "homepage_2.png", class: "steps" %>
+  </div>
+</div>
+<div data-controller="scroll-reveal" class= "container">
+  <div class= "reveal" data-scroll-reveal-target="item" data-delay="250ms">
+    <%= image_tag "homepage_3.png", class: "steps" %>
+  </div>
+</div>
+
+
+
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s cubic-bezier(0.5, 0, 0, 1);
+    transition-property: opacity, transform;
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+</style>
