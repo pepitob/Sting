@@ -42,7 +42,7 @@ class Challenge < ApplicationRecord
   def is_update_day
     return true  if Date.today == end_date + 1
     return false if current_week == 1
-    (((Date.today - start_date).to_i  - 1) % 7).zero?
+    (((Date.today - start_date).to_i - 1) % 7).zero?
   end
   private
 
@@ -60,11 +60,10 @@ class Challenge < ApplicationRecord
   # end
 
   def set_challenge_qty
-    weeks = (end_date - start_date).to_i / 7
-    if weeks.ceil <= 1
+    if week_count <= 1
       self.challenge_qty = goal_qty
     else
-      self.challenge_qty = goal_qty * weeks.ceil
+      self.challenge_qty = goal_qty * week_count
     end
   end
 

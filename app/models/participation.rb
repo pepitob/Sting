@@ -3,6 +3,7 @@ class Participation < ApplicationRecord
   belongs_to :user
   has_many :cards
   after_create :create_weekly_progresses
+  after_create :create_cards
 
 
   def create_weekly_progresses
@@ -22,5 +23,13 @@ class Participation < ApplicationRecord
     end
   end
 
+  def create_cards
+    challenge.card_num.times do
+      card = Card.new
+      card.value = set_value
+      card.action = set_action
+      card.save!
+    end
+  end
 
 end

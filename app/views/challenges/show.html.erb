@@ -74,33 +74,30 @@
 
 
 
-      <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Your cards
-        </button>
-      </p>
-      <%# hiding cards %>
-      <div class="collapse" id="collapseExample">
-        <%# Adding flipping cards %>
-        <div class="card card-body">
-          <h2>Your cards</h2>
-          <%# Each card %>
-          <div class="flip-box">
-            <div class="flip-box-inner">
-              <div class="flip-box-front">
-              <%# not to turn again if we already used them ()%>
-              <%# This is the front side %>
-                <%= image_tag "stingy.png", alt: "StingyCard", class:"StingyCard" %>
-              </div>
-              <div class="flip-box-back">
-              <%# This is the back side %>
-                <%= image_tag "homepage_stingy.png", alt: "CardValue", class:"CardValue" %>
+        </a>
+        <%# hiding cards %>
+        <div class="collapse" id="collapseExample">
+          <%# Adding flipping cards %>
+          <div class="card card-body">
+            <h2>Your cards</h2>
+            <%# Each card %>
+            <div class="flip-box">
+              <div class="flip-box-inner">
+                <div class="flip-box-front">
+                <%# not to turn again if we already used them ()%>
+                <%# This is the front side %>
+                  <%= image_tag "stingy.png", alt: "StingyCard", class:"StingyCard" %>
+                </div>
+                <div class="flip-box-back">
+                <%# This is the back side %>
+                  <%= image_tag "homepage_stingy.png", alt: "CardValue", class:"CardValue" %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
 
 
       <div class="card">
