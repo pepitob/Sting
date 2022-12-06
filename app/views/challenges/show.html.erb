@@ -36,17 +36,18 @@
 
 
       <div class="card">
-        <div class="list-group">
+        <div class="list-group image-percent">
           <% @challenge.participations.each do |participation| %>
             <div data-controller="chart" class="imgfondo" data-chart-target="graph">
               <%= tag.div  data: { chart_target: "progress", value: participation.user.id} do %>
                 <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
-                  <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                 </div>
               <% end %>
             </div>
           <% end %>
         </div>
+
 
         <%# <div data-controller="clipboard" data-clipboard-success-content="Copied!">
           <input type="text" value="Click the button to copy me!" data-clipboard-target="source" />
