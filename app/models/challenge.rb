@@ -21,6 +21,29 @@ class Challenge < ApplicationRecord
   before_save :set_challenge_qty
   # validate :range_date
 
+  def week_count
+    (end_date - start_date).to_i / 7 + 1
+  end
+
+  def weekly_discount
+    price / week_count
+  end
+
+  def members_count
+    participations.count
+  end
+
+  def current_week
+    return nil if Date.today < start_date || Date.today > end_date
+
+    ((Date.today - start_date).to_i / 7) + 1
+  end
+
+  def is_update_day
+    return true  if Date.today == end_date + 1
+    return false if current_week == 1
+    (((Date.today - start_date).to_i  - 1) % 7).zero?
+  end
   private
 
   def end_date_after_start_date
