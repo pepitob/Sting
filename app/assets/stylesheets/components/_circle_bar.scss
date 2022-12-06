@@ -1,6 +1,6 @@
 .circle-progress-value {
 	stroke-width: 6px;
-	stroke: hsl(320, 80%, 60%);
+	stroke: $dark_blue;
 	stroke-dasharray: 25 5;
 }
 .circle-progress-circle {
@@ -13,11 +13,26 @@
 	fill: hsl(180, 80%, 47%);
 }
 
+.image-percent {
 
-.imgfondo{
+    .avatar-progress {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    align-items: center !important;
 
-  .circle-progress-text {
-    fill: none;
   }
 
-}
+  .imgfondo{
+      z-index: 100 !important;
+      position: relative;
+    }
+
+    .stack-top {
+      z-index: 0 !important;
+      position: absolute;
+
+
+    }
+
+  }
