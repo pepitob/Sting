@@ -3,6 +3,7 @@ class Challenge < ApplicationRecord
   has_many :weekly_progresses
   has_many :participants, through: :participations, class_name: :user
   has_many :cards, through: :participations
+  has_many :messages
   belongs_to :user
 
   CATEGORY = ["Running", "Walking", "Swimming", "Biking"]

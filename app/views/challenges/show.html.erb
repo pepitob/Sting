@@ -98,8 +98,13 @@
 
 
 
-      <div class="card">
-        <h2>Here goes our feed :)</h2>
+      <div data-controller="insert-message" class="card">
+        <div data-insert-message-target="messages">
+          <% @challenge.messages.each do |m|  %>
+            <%= render "messages/message", message: m %>
+          <% end %>
+        </div>
+        <%= render "messages/new_message", message: @message, challenge: @challenge %>
       </div>
 
     </div>
