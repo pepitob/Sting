@@ -18,3 +18,11 @@ application.register("insert-message", InsertMessageController)
 
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)
+
+
+import ChartController from "./chart_controller"
+application.register('chart', ChartController)
+
+import ScrollReveal from 'stimulus-scroll-reveal'
+application.register('scroll-reveal', ScrollReveal)
+

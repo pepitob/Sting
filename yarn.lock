@@ -712,6 +712,12 @@ stimulus-clipboard@^3.2.2:
   resolved "https://registry.npmjs.org/stimulus-clipboard/-/stimulus-clipboard-3.2.2.tgz"
   integrity sha512-J/dCoyxL+hItBQrI6TkiBR+WkRXiSNPJw8hBRZtvdAOL/iXGm88nTOCKoU0T1tFlGcy1ODX0uyjxWgCKvNhFRw==
 
+
+stimulus-scroll-reveal@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-scroll-reveal/-/stimulus-scroll-reveal-3.0.0.tgz#0081591b0e4fc03963f7ae33d653ac4aeb73c4fc"
+  integrity sha512-WRW8pwuTU3IX7jziHMSI1XxktBL2yqtwj5aJs+C6sFZ+M27+b+3df2nIYxo1O5pn+RV97exoecpUHVlDa6ALxQ==
+
 supports-color@^8.0.0:
   version "8.1.1"
   resolved "https://registry.npmjs.org/supports-color/-/supports-color-8.1.1.tgz"
