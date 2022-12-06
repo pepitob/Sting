@@ -14,7 +14,7 @@
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="card">
-        <h2 class="center-element">Progress</h2>
+        <h2 class="center-element">Progress Total</h2>
         <% @challenge.participations.each do |participation| %>
           <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated"
@@ -36,6 +36,7 @@
 
 
       <div class="card">
+        <h2 class="center-element">Who's leading this week?</h2>
         <div class="list-group image-percent">
           <% @challenge.participations.each do |participation| %>
             <div data-controller="chart" class="imgfondo" data-chart-target="graph">
@@ -73,15 +74,11 @@
 
 
 
-      <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Your cards
-        </button>
-      </p>
-      <%# hiding cards %>
-      <div class="collapse" id="collapseExample">
-        <%# Adding flipping cards %>
-        <div class="card card-body">
+<div data-controller="reveal" data-reveal-hidden-class="d-none">
+  <button data-action="click->reveal#toggle" type="button" class="btn btn-ghost">Stinger Cards</button>
+
+  <div data-reveal-target="item" class="d-none mt-4">
+    <div class="card card-body">
           <h2>Your cards</h2>
           <%# Each card %>
           <div class="flip-box">
@@ -95,7 +92,8 @@
             </div>
           </div>
         </div>
-      </div>
+  </div>
+</div>
 
 
 
