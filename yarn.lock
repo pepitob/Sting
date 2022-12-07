@@ -712,6 +712,11 @@ stimulus-clipboard@^3.2.2:
   resolved "https://registry.npmjs.org/stimulus-clipboard/-/stimulus-clipboard-3.2.2.tgz"
   integrity sha512-J/dCoyxL+hItBQrI6TkiBR+WkRXiSNPJw8hBRZtvdAOL/iXGm88nTOCKoU0T1tFlGcy1ODX0uyjxWgCKvNhFRw==
 
+stimulus-reveal-controller@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-reveal-controller/-/stimulus-reveal-controller-4.0.0.tgz#61579baf536d0015e618be1a54bc6aa6cb0d0e22"
+  integrity sha512-LyzASoA5tl3yid+yzzZ3dF+560dGffma+c6ph+Eq3ylG4gn9SK/SPMbajRrFsPDpiFuAa49K3dlHTW6nMg9aFg==
+
 stimulus-scroll-reveal@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/stimulus-scroll-reveal/-/stimulus-scroll-reveal-3.0.0.tgz#0081591b0e4fc03963f7ae33d653ac4aeb73c4fc"
