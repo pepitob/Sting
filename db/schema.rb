@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_085131) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_090927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,12 +46,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_085131) do
     t.string "action"
     t.float "value"
     t.bigint "participation_id", null: false
-    t.bigint "weekly_progress_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "used", default: false
     t.index ["participation_id"], name: "index_cards_on_participation_id"
-    t.index ["weekly_progress_id"], name: "index_cards_on_weekly_progress_id"
   end
 
   create_table "challenges", force: :cascade do |t|
@@ -142,7 +140,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_085131) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cards", "participations"
-  add_foreign_key "cards", "weekly_progresses"
   add_foreign_key "challenges", "users"
   add_foreign_key "messages", "challenges"
   add_foreign_key "messages", "users"

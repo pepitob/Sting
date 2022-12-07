@@ -82,18 +82,23 @@
 
   <div data-reveal-target="item" class="d-none mt-4">
     <div class="card card-body">
-          <h2>Your cards</h2>
+          <h2>Let's sting your enemies</h2>
           <%# Each card %>
-          <div class="flip-box">
-            <div class="flip-box-inner">
-              <div class="flip-box-front">
-                <%= image_tag "face_down_card.png", alt: "StingyCard", class:"StingyCard" %>
+          <div class= "d-flex flex-row">
+            <% @user_cards.each do |card| %>
+              <div class="flip-box">
+                <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <%= image_tag "face_down_card.png", alt: "StingyCard", class:"StingyCard" %>
+                  </div>
+                  <div class="flip-box-back">
+                  <%# esto va a ser un boton %>
+                  <%= link_to "apply cards", select_participant_challenge_participation_path(@challenge, @user_participation, card: card.id), class: "btn btn-primary"%>
+                    <%= image_tag card.action , alt: "CardValue", class:"CardValue" %>
+                  </div>
+                </div>
               </div>
-              <div class="flip-box-back">
-                <%= image_tag "neg35_card.png", alt: "CardValue", class:"CardValue" %>
-              </div>
-            </div>
-          </div>
+            <% end %>
         </div>
   </div>
 </div>

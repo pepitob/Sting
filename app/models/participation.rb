@@ -25,7 +25,7 @@ class Participation < ApplicationRecord
 
   def create_cards
     challenge.card_num.times do
-      Card.create(participation_id: id)
+      Card.create(participation_id: self.id)
     end
   end
 
