@@ -30,9 +30,21 @@ class Workout < ApplicationRecord
             if @weekly_progress.unit == "Km"
               @weekly_progress.progress += @workout.distance / 1000
               @weekly_progress.save
+              message = Message.new
+              message.content = "#{@weekly_progress.user.first_name} has completed a workout! They completed #{@workout.distance.round(2)}km in #{@workout.duration.round(2)} hours."
+              message.challenge = participation.challenge
+              message.user = participation.challenge.user
+              message.stingy = true
+              message.save!
             elsif @weekly_progress.unit == "Hours"
               @weekly_progress.progress += @workout.duration / 3600
               @weekly_progress.save
+              message = Message.new
+              message.content = "#{@weekly_progress.user.firts_name} has completed a workout! They completed #{@workout.distance.round(2)}km in #{@workout.duration.round(2)} hours."
+              message.challenge = participation.challenge
+              message.user = participation.challenge.user
+              message.stingy = true
+              message.save!
             end
           end
         end
