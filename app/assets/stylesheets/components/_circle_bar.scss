@@ -10,7 +10,7 @@
 .circle-progress-text {
 	font-weight: bold;
   font-size: larger;
-	fill: hsl(180, 80%, 47%);
+	fill: $dark_blue;
 }
 
 
@@ -30,6 +30,8 @@
   .imgfondo{
       z-index: 100 !important;
       position: relative;
+      margin: 20px;
+
     }
 
     .stack-top {
