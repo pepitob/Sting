@@ -8,9 +8,9 @@
 
 <div class= "home-button">
   <% if current_user %>
-  <%= link_to "Get Stung!", challenges_path, class: "btn btn-ghost"%>
+  <%= link_to "Get Stung!", challenges_path, class: "btn btn-sting"%>
   <% else %>
-  <%= link_to "Get Stung!", new_user_session_path(@user), class: "btn btn-ghost" %>
+  <%= link_to "Get Stung!", new_user_session_path(@user), class: "btn btn-sting" %>
   <% end %>
 </div>
 
