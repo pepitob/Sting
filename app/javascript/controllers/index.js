@@ -4,17 +4,24 @@
 
 import { application } from "./application"
 
+import ChartController from "./chart_controller"
+application.register("chart", ChartController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InsertMessageController from "./insert_message_controller"
+application.register("insert-message", InsertMessageController)
+
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)
 
-import ChartController from "./chart_controller"
-application.register('chart', ChartController)
-
 import ScrollReveal from 'stimulus-scroll-reveal'
 application.register('scroll-reveal', ScrollReveal)
+
+
+import Reveal from 'stimulus-reveal-controller'
+application.register('reveal', Reveal)

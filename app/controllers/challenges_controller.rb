@@ -30,8 +30,9 @@ class ChallengesController < ApplicationController
     end
   end
 
-
   def show
+    @message = Message.new
+    @message.challenge = @challenge
     @challenge = Challenge.find(params[:id])
     authorize @challenge
     # I can add participants in the show view
@@ -54,5 +55,9 @@ class ChallengesController < ApplicationController
     params.require(:participation).permit(:user_id)
   end
 
+
+  def message_params
+    params.require(:message).permit(:content)
+  end
 
 end

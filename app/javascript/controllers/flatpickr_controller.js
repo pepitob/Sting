@@ -6,7 +6,7 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 export default class extends Controller {
   connect() {
     flatpickr(this.element, {
-     // altInput: true,
+        // altInput: true,
         plugins: [new rangePlugin({
           input: "#challenge_end_date"
         })]

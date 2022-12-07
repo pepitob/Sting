@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_12_06_210318) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,7 +69,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_210318) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "messages"
     t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "challenge_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_messages_on_challenge_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -131,6 +144,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_210318) do
   add_foreign_key "cards", "participations"
   add_foreign_key "cards", "weekly_progresses"
   add_foreign_key "challenges", "users"
+  add_foreign_key "messages", "challenges"
+  add_foreign_key "messages", "users"
   add_foreign_key "participations", "challenges"
   add_foreign_key "participations", "users"
   add_foreign_key "weekly_progresses", "challenges"

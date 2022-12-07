@@ -10,6 +10,7 @@
     "js-circle-progress": "^0.2.4",
     "stimulus-character-counter": "^4.1.0",
     "stimulus-clipboard": "^3.2.2",
+    "stimulus-reveal-controller": "^4.0.0",
     "stimulus-scroll-reveal": "^3.0.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"

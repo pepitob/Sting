@@ -712,10 +712,17 @@
   "resolved" "https://registry.npmjs.org/stimulus-clipboard/-/stimulus-clipboard-3.2.2.tgz"
   "version" "3.2.2"
 
-"stimulus-scroll-reveal@^3.0.0":
-  "integrity" "sha512-WRW8pwuTU3IX7jziHMSI1XxktBL2yqtwj5aJs+C6sFZ+M27+b+3df2nIYxo1O5pn+RV97exoecpUHVlDa6ALxQ=="
-  "resolved" "https://registry.npmjs.org/stimulus-scroll-reveal/-/stimulus-scroll-reveal-3.0.0.tgz"
-  "version" "3.0.0"
+
+stimulus-reveal-controller@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-reveal-controller/-/stimulus-reveal-controller-4.0.0.tgz#61579baf536d0015e618be1a54bc6aa6cb0d0e22"
+  integrity sha512-LyzASoA5tl3yid+yzzZ3dF+560dGffma+c6ph+Eq3ylG4gn9SK/SPMbajRrFsPDpiFuAa49K3dlHTW6nMg9aFg==
+
+stimulus-scroll-reveal@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-scroll-reveal/-/stimulus-scroll-reveal-3.0.0.tgz#0081591b0e4fc03963f7ae33d653ac4aeb73c4fc"
+  integrity sha512-WRW8pwuTU3IX7jziHMSI1XxktBL2yqtwj5aJs+C6sFZ+M27+b+3df2nIYxo1O5pn+RV97exoecpUHVlDa6ALxQ==
+
 
 "supports-color@^8.0.0":
   "integrity" "sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q=="

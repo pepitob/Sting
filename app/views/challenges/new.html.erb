@@ -12,8 +12,8 @@
           <%= f.select :unit, collection: Challenge::UNIT%>
         </div>
         <%# the usernames of your friends %>
-        <%= f.input :start_date, as: :string, input_html: { data: { controller: "flatpickr" } }%></div>
-        <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } }%></div>
+        <%= f.input :start_date, as: :string, input_html: { data: { controller: "flatpickr" } } %></div>
+        <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } } %></div>
         <%= f.input :price, as: :float, label: "How much money are you willing to lose?", placeholder: "30"%>
         <div class="mb-2">
           <%= f.select :card_num, collection: Challenge::CARDS, class: "form-dropdown" %>
