@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
   def index
     @challenges = policy_scope(Challenge) # returns a Challenge.all
-    @challenges = @challenges.select { |challenge| challenge.participations.any? {|participation| participation.user == current_user}}
+    @challenges = @challenges.select { |challenge| challenge.participations.any? { |participation| participation.user == current_user}}
   end
 
   def new

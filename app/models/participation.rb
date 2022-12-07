@@ -11,6 +11,8 @@ class Participation < ApplicationRecord
       weekly_progress.challenge = challenge
       weekly_progress.week_num = i + 1
       weekly_progress.progress = 0
+      weekly_progress.week_goal = challenge.goal_qty
+      weekly_progress.challenge_goal = challenge.challenge_qty
       if i == 0
         weekly_progress.balance = challenge.price
       else

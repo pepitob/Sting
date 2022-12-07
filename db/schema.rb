@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_12_07_133010) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,17 +69,42 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_133010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.bigint "messages_id"
     t.string "messages"
+    t.index ["messages_id"], name: "index_challenges_on_messages_id"
     t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.string "email"
+    t.string "token"
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.integer "invitable_id"
+    t.string "invitable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_invites_on_email"
+    t.index ["invitable_id", "invitable_type"], name: "index_invites_on_invitable_id_and_invitable_type"
+    t.index ["recipient_id"], name: "index_invites_on_recipient_id"
+    t.index ["sender_id"], name: "index_invites_on_sender_id"
+    t.index ["token"], name: "index_invites_on_token"
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.bigint "challenge_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "stingy", default: false
+    t.bigint "challenge_id", null: false
+
     t.index ["challenge_id"], name: "index_messages_on_challenge_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -122,6 +149,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_133010) do
     t.datetime "updated_at", null: false
     t.string "unit"
     t.boolean "updated", default: false
+    t.float "week_goal"
+    t.float "challenge_goal"
     t.index ["challenge_id"], name: "index_weekly_progresses_on_challenge_id"
     t.index ["user_id"], name: "index_weekly_progresses_on_user_id"
   end
@@ -143,7 +172,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_133010) do
   add_foreign_key "cards", "participations"
   add_foreign_key "cards", "weekly_progresses"
   add_foreign_key "challenges", "users"
-  add_foreign_key "messages", "challenges"
   add_foreign_key "messages", "users"
   add_foreign_key "participations", "challenges"
   add_foreign_key "participations", "users"
