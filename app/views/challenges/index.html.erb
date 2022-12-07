@@ -22,7 +22,7 @@
             <div class="challenge">
               <%# Circle progress in js %>
 
-              <div data-controller="chart" class="circle-prog" data-value= <%=challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>>
+              <div data-controller="chart" class="circle-prog" data-value= <%= (challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>>
               </div>
 
               <div class="challenge-summary">
