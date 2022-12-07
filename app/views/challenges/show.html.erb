@@ -41,12 +41,10 @@
         <h2 class="center-element">Who's leading this week?</h2>
         <div class="list-group image-percent">
           <% @challenge.participations.each do |participation| %>
-            <div data-controller="chart" class="imgfondo" data-chart-target="graph">
-              <%= tag.div  data: { chart_target: "progress", value: participation.user.id} do %>
+            <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= participation.user.id%>>
                 <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                   <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                 </div>
-              <% end %>
             </div>
           <% end %>
         </div>

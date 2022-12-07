@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row justify-content-center">
-    <div class="col-12 ">
+    <div class="col-12 col-sm-6">
       <div class="card welcome-mesage">
         <div class="user-pic"><%= cl_image_tag current_user.photo.key, class:"avatar-large" %></div>
         <div class="user-summary">
@@ -21,9 +21,8 @@
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
               <%# Circle progress in js %>
-              <div data-controller="chart" class="circle-prog" data-chart-target="graph">
-                 <%= percentage = (challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>
-                <%= tag.div  data: { chart_target: "progress", value: (challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) } %>
+
+              <div data-controller="chart" class="circle-prog" data-value= <%=challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>>
               </div>
 
               <div class="challenge-summary">
