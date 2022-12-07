@@ -1,6 +1,5 @@
-<div class = "container">
-  <div class="row justify-content-center">
-    <div class="col-12">
+<div class = "container">  <div class="row justify-content-center">
+  <div class="col-12">
     <div class="center-element">
       <h1 class="background-color-black"><%= @challenge.name %></h1>
       <%# <p>Week nr: <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
@@ -8,10 +7,11 @@
       <p>This Week Goal:  <%= @challenge.goal_qty%> <%=@challenge.unit%></p>
       <p>This week progress: <%= @challenge.weekly_progresses.sum(:progress) %> <%= @challenge.unit %></p>
     </div>
-    </div>
   </div>
+</div>
 
  <%# Progress bars with avatars bootstrap %>
+
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="card">
@@ -33,7 +33,9 @@
 
 
 
+
      <%# Circle progress in js %>
+
 
 
       <div class="card">
@@ -41,12 +43,10 @@
         <h2 class="center-element">Who's leading this week?</h2>
         <div class="list-group image-percent">
           <% @challenge.participations.each do |participation| %>
-            <div data-controller="chart" class="imgfondo" data-chart-target="graph">
-              <%= tag.div  data: { chart_target: "progress", value: participation.user.id} do %>
+            <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= participation.user.id%>>
                 <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                   <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                 </div>
-              <% end %>
             </div>
           <% end %>
         </div>
@@ -67,12 +67,12 @@
           <% end %>
         <%# </div> %>
 
-        <div class="share">
-          <%= link_to new_challenge_participation_path(@challenge) do%>
-           <i class="fa-solid fa-link"></i>
-          <% end %>
-        </div>
-      </div>
+<div class="share">
+    <%= link_to new_challenge_participation_path(@challenge) do%>
+      <i class="fa-solid fa-link"></i>
+    <% end %>
+  </div>
+</div>
 
 
 
@@ -105,15 +105,11 @@
 
 
 
-      <div data-controller="insert-message" class="card">
-        <div data-insert-message-target="messages">
-          <% @challenge.messages.each do |m|  %>
-            <%= render "messages/message", message: m %>
-          <% end %>
-        </div>
-        <%= render "messages/new_message", message: @message, challenge: @challenge %>
-      </div>
-
-    </div>
+<div data-controller="insert-message" class="messagebox">
+  <div data-insert-message-target="messages" class="allmessages">
+    <% @challenge.messages.each do |m|  %>
+      <%= render "messages/message", message: m %>
+    <% end %>
   </div>
+    <%= render "messages/new_message", message: @message, challenge: @challenge %>
 </div>
