@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_104932) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_085131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,13 +43,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_104932) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "Action"
+    t.string "action"
     t.float "value"
     t.bigint "participation_id", null: false
     t.bigint "weekly_progress_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "used"
+    t.boolean "used", default: false
     t.index ["participation_id"], name: "index_cards_on_participation_id"
     t.index ["weekly_progress_id"], name: "index_cards_on_weekly_progress_id"
   end
@@ -120,6 +120,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_104932) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "unit"
+    t.boolean "updated", default: false
+    t.float "week_goal"
+    t.float "challenge_goal"
     t.index ["challenge_id"], name: "index_weekly_progresses_on_challenge_id"
     t.index ["user_id"], name: "index_weekly_progresses_on_user_id"
   end

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     get_user_tokens if params[:code].present?
     authorize @user
     create_redirect_url
-    fetch_workouts if @user.connected_strava
+    # fetch_workouts if @user.connected_strava
   end
 
   # def destroy
@@ -45,35 +45,35 @@ class UsersController < ApplicationController
     @user.save
   end
 
-  def fetch_workouts
-    refresh_tokens if DateTime.now() > @user.token_expires_at
-    user_client = Strava::Api::Client.new(
-      access_token: @user.access_token
-    )
-    @activities = user_client.athlete_activities
-    @activities.each do |activity|
-      if Workout.where(activity_id: activity.id).exists?
-      else
-        @workout = Workout.new
-        @workout.category = activity.type
-        @workout.distance = activity.distance
-        @workout.duration = activity.moving_time
-        @workout.date = activity.start_date_local
-        @workout.user = @user
-        @workout.activity_id = activity.id
-        @workout.save!
-      end
-    end
-  end
+  # def fetch_workouts
+  #   refresh_tokens if DateTime.now() > @user.token_expires_at
+  #   user_client = Strava::Api::Client.new(
+  #     access_token: @user.access_token
+  #   )
+  #   @activities = user_client.athlete_activities
+  #   @activities.each do |activity|
+  #     if Workout.where(activity_id: activity.id).exists?
+  #     else
+  #       @workout = Workout.new
+  #       @workout.category = activity.type
+  #       @workout.distance = activity.distance
+  #       @workout.duration = activity.moving_time
+  #       @workout.date = activity.start_date_local
+  #       @workout.user = @user
+  #       @workout.activity_id = activity.id
+  #       @workout.save!
+  #     end
+  #   end
+  # end
 
-  def refresh_tokens
-    response = @client.oauth_token(
-      refresh_token: @user.refresh_token,
-      grant_type: 'refresh_token'
-    )
-    @user.access_token = response.access_token
-    @user.refresh_token = response.refresh_token
-    @user.token_expires_at = response.expires_at
-    @user.save!
-  end
+  # def refresh_tokens
+  #   response = @client.oauth_token(
+  #     refresh_token: @user.refresh_token,
+  #     grant_type: 'refresh_token'
+  #   )
+  #   @user.access_token = response.access_token
+  #   @user.refresh_token = response.refresh_token
+  #   @user.token_expires_at = response.expires_at
+  #   @user.save!
+  # end
 end

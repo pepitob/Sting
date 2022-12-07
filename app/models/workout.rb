@@ -18,20 +18,20 @@ class Workout < ApplicationRecord
         elsif ["Run", "Walk", "Ride", "Swim"].include? activity.type
           @workout = Workout.new
           @workout.category = activity.type
-          @workout.distance = activity.distance
-          @workout.duration = activity.moving_time
+          @workout.distance = activity.distance / 1000
+          @workout.duration = activity.moving_time / 3600
           @workout.date = activity.start_date_local
           @workout.user = user
           @workout.activity_id = activity.id
           @workout.save!
           @participations.each do |participation|
-            week_num =  (((Date.today - participation.challenge.start_date).to_i / 7) + 1)
+            week_num = (((Date.today - participation.challenge.start_date).to_i / 7) + 1)
             @weekly_progress = WeeklyProgress.find_by(user: user, week_num: week_num, challenge: participation.challenge)
             if @weekly_progress.unit == "Km"
-              @weekly_progress.progress += @workout.distance
+              @weekly_progress.progress += @workout.distance / 1000
               @weekly_progress.save
             elsif @weekly_progress.unit == "Hours"
-              @weekly_progress.progress += @workout.duration
+              @weekly_progress.progress += @workout.duration / 3600
               @weekly_progress.save
             end
           end

@@ -6,6 +6,7 @@
       <%# <p>Week nr: <%= ((@challenge.end_date - @challenge.start_date).to_i/7).round %></p>
       <div><h2><span class="yellow-border-font">Challenge </span> Goal: <span class=""><%=@challenge.challenge_qty %> <%=@challenge.unit%></span></h2></div>
       <p>This Week Goal:  <%= @challenge.goal_qty%> <%=@challenge.unit%></p>
+      <p>This week progress: <%= @challenge.weekly_progresses.sum(:progress) %> <%= @challenge.unit %></p>
     </div>
     </div>
   </div>
@@ -20,10 +21,10 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated"
               role="progressbar"
               aria-label="Animated striped example"
-              aria-valuenow="<%= participation.challenge.goal_qty / participation.challenge.challenge_qty * 100%>%"
+              aria-valuenow="<%= ( participation.user.weekly_progresses.sum(:progress)  / @challenge.challenge_qty ) * 100%>%"
               aria-valuemin="0"
               aria-valuemax="100"
-              style="width:<%= participation.challenge.goal_qty / participation.challenge.challenge_qty * 100%>%">
+              style="width:<%= ( participation.user.weekly_progresses.sum(:progress) / participation.challenge.challenge_qty ) * 100%>%">
                 <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
               </div>
           </div>
@@ -36,15 +37,14 @@
 
 
       <div class="card">
+
         <h2 class="center-element">Who's leading this week?</h2>
         <div class="list-group image-percent">
           <% @challenge.participations.each do |participation| %>
-            <div data-controller="chart" class="imgfondo" data-chart-target="graph">
-              <%= tag.div  data: { chart_target: "progress", value: participation.user.id} do %>
+            <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= participation.user.id%>>
                 <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                   <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                 </div>
-              <% end %>
             </div>
           <% end %>
         </div>
@@ -71,6 +71,7 @@
           <% end %>
         </div>
       </div>
+
 
 
 
