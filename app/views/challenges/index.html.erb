@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row justify-content-center">
-    <div class="col-12 ">
+    <div class="col-12 col-sm-6">
       <div class="card welcome-mesage">
         <div class="user-pic"><%= cl_image_tag current_user.photo.key, class:"avatar-large" %></div>
         <div class="user-summary">
@@ -21,13 +21,14 @@
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
               <%# Circle progress in js %>
-              <div data-controller="chart" class="circle-prog" data-chart-target="graph">
-                <%= tag.div  data: { chart_target: "progress", value: challenge.price} %>
+
+              <div data-controller="chart" class="circle-prog" data-value= <%= (challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>>
               </div>
 
               <div class="challenge-summary">
                 <h2 class="center-element"><%= challenge.name %></h2>
-                <p><%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> per week</p>
+                <p><%= challenge.category %> <%= challenge.goal_qty %> <%= challenge.unit %> per week</p>
+                <p>Total goal: <%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> </p>
                 <div class="list-group">
                   <% challenge.participations.each do |participation| %>
                       <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">

@@ -8,7 +8,7 @@ class ParticipationsController < ApplicationController
 
   def create
     authorize @challenge
-    @participation = Participation.new()
+    @participation = Participation.new
     @participation.challenge = @challenge
     @participation.user = current_user
     if @participation.save
