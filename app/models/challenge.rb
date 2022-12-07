@@ -2,8 +2,10 @@ class Challenge < ApplicationRecord
   has_many :participations
   has_many :weekly_progresses
   has_many :participants, through: :participations, class_name: :user
+
   has_many :cards, through: :participations
   has_many :messages
+
   belongs_to :user
 
   CATEGORY = ["Run", "Walk", "Ride", "Swim"]
@@ -22,10 +24,40 @@ class Challenge < ApplicationRecord
   before_save :set_challenge_qty
   # validate :range_date
 
+  def week_count
+    (end_date - start_date).to_i / 7 + 1
+  end
+
+  def weekly_discount
+    price / week_count
+  end
+
+  def members_count
+    participations.count
+  end
+
+  def current_week
+    return nil if Date.today < start_date || Date.today > end_date + 1
+
+    if Date.today == (end_date + 1)
+      ((Date.today - start_date).to_i / 7) + 2
+    else
+      ((Date.today - start_date).to_i / 7) + 1
+    end
+  end
+
+  def is_update_day
+    return true  if Date.today == end_date + 1
+    return false if current_week == 1
+
+    (((Date.today - start_date).to_i - 1) % 7).zero?
+  end
+
   private
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
+
     if end_date < start_date
       errors.add(:end_date, "Must be after the start date")
     end
@@ -38,11 +70,10 @@ class Challenge < ApplicationRecord
   # end
 
   def set_challenge_qty
-    weeks = (end_date - start_date).to_i / 7
-    if weeks.ceil <= 1
+    if week_count <= 1
       self.challenge_qty = goal_qty
     else
-      self.challenge_qty = goal_qty * weeks.ceil
+      self.challenge_qty = goal_qty * week_count
     end
   end
 
