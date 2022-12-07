@@ -6,13 +6,17 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 export default class extends Controller {
   connect() {
     flatpickr(this.element, {
+      disableMobile: "true",
         // altInput: true,
         plugins: [new rangePlugin({
           input: "#challenge_end_date"
         })]
     });
   }
+
 }
+
+
 
 
 //start_date.flatpickr({minDate: "today"})
