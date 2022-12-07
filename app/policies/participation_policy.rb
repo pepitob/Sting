@@ -14,4 +14,8 @@ class ParticipationPolicy < ApplicationPolicy
   def new?
     true
   end
+
+  def select_participant?
+    true
+  end
 end

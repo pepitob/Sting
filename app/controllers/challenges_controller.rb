@@ -1,4 +1,5 @@
 class ChallengesController < ApplicationController
+  # before_action :set_cards, only: %i[show]
   def index
     @challenges = policy_scope(Challenge) # returns a Challenge.all
     @challenges = @challenges.select { |challenge| challenge.participations.any? { |participation| participation.user == current_user}}
@@ -35,14 +36,8 @@ class ChallengesController < ApplicationController
     @message.challenge = @challenge
     @challenge = Challenge.find(params[:id])
     authorize @challenge
-    # I can add participants in the show view
-    # @participation = Participation.new
-    # @total_progress = WeeklyProgress.sum(:progress)
-    # @weekly_progress = WeeklyProgress.find_by(challenge: @challenge)
-    # @total_progress = @weekly_progress.sum(:progress)
-
-
-
+    @user_participation = Participation.find_by(challenge: @challenge, user: current_user)
+    @user_cards = Card.where(participation: @user_participation)
   end
 
   private
@@ -60,4 +55,7 @@ class ChallengesController < ApplicationController
     params.require(:message).permit(:content)
   end
 
+  # def set_cards
+  #   @card = Card.find([:participation_id])
+  # end
 end

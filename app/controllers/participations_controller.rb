@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-  before_action :set_challenge, only: %i[new create]
+  before_action :set_challenge, only: %i[new create select_participant ]
 
   def new
     authorize @challenge
@@ -20,6 +20,15 @@ class ParticipationsController < ApplicationController
     end
   end
   # if the user is not allowed to be here then redirect it to other page, also check params
+  def select_participant
+    #authorize this user_participation to access the page
+    @user_participation = Participation.find(params[:id])
+    authorize @user_participation
+    @card = Card.find(params[:card])
+    @participations = Participation.where(challenge: @challenge).where.not(user: current_user)
+    @week = @challenge.current_week
+
+  end
 
   private
 

@@ -1,2 +1,3 @@
 class WeeklyProgressesController < ApplicationController
+
 end
