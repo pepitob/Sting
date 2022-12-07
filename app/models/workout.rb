@@ -18,8 +18,8 @@ class Workout < ApplicationRecord
         elsif ["Run", "Walk", "Ride", "Swim"].include? activity.type
           @workout = Workout.new
           @workout.category = activity.type
-          @workout.distance = activity.distance / 1000
-          @workout.duration = activity.moving_time / 3600
+          @workout.distance = (activity.distance / 1000.00).round(2)
+          @workout.duration = (activity.moving_time / 3600.00).round(2)
           @workout.date = activity.start_date_local
           @workout.user = user
           @workout.activity_id = activity.id
@@ -28,19 +28,20 @@ class Workout < ApplicationRecord
             week_num = (((Date.today - participation.challenge.start_date).to_i / 7) + 1)
             @weekly_progress = WeeklyProgress.find_by(user: user, week_num: week_num, challenge: participation.challenge)
             if @weekly_progress.unit == "Km"
-              @weekly_progress.progress += @workout.distance / 1000
+              @weekly_progress.progress += @workout.distance
               @weekly_progress.save
               message = Message.new
-              message.content = "#{@weekly_progress.user.first_name} has completed a workout! They completed #{@workout.distance.round(2)}km in #{@workout.duration.round(2)} hours."
-              message.challenge = participation.challenge
+              workout_text = "🏅 #{@weekly_progress.user.first_name} has completed a workout: #{@workout.distance}km in #{@workout.duration} hours."
+              goal_text = "🚩 #{@weekly_progress.user.first_name} reached their weekly goal!"
+              @weekly_progress.progress >= participation.challenge.goal_qty ? message.content = workout_text + goal_text : message.content = workout_text
               message.user = participation.challenge.user
               message.stingy = true
               message.save!
             elsif @weekly_progress.unit == "Hours"
-              @weekly_progress.progress += @workout.duration / 3600
+              @weekly_progress.progress += @workout.duration
               @weekly_progress.save
               message = Message.new
-              message.content = "#{@weekly_progress.user.firts_name} has completed a workout! They completed #{@workout.distance.round(2)}km in #{@workout.duration.round(2)} hours."
+              message.content = "🏅 #{@weekly_progress.user.firts_name} has completed a workout! They completed #{@workout.distance}km in #{@workout.duration} hours."
               message.challenge = participation.challenge
               message.user = participation.challenge.user
               message.stingy = true
