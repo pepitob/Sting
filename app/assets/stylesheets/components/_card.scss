@@ -64,7 +64,9 @@
   justify-content: space-between;
 
   .circle-prog{
+
     align-self: center;
+    justify-content: center;
     width: 30%;
     height: 150px;
     align-items: center;
@@ -112,6 +114,7 @@
 
 .user_info {
   font-weight: bold;
+  margin-left: none;
 }
 
 .messagebox {
