@@ -4,8 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["form", "messages"]
   connect() {
-    console.log(this.formTarget)
-    console.log(this.messagesTarget)
+   // this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+    this.messagesTarget.scroll({top: this.messagesTarget.scrollHeight, behaviour: "smooth"})
   }
 
   send(event) {
@@ -19,8 +19,10 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         this.messagesTarget.insertAdjacentHTML("beforeend", data.inserted_item)
+        this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
         this.formTarget.outerHTML = data.form
-        window.scrollTo(0, document.body.scrollHeight)
       })
   }
 }
+
+// window.scrollTo(0, document.querySelector('.messagebox').querySelector(".allmessages").scrollHeight)
