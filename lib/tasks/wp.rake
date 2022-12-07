@@ -6,14 +6,13 @@ namespace :wp do
         challenge.participations.each do |participation|
           last_weekly_progress = WeeklyProgress.find_by(week_num: (challenge.current_week - 1), challenge: challenge, user: participation.user)
           weekly_progress = WeeklyProgress.find_by(week_num: challenge.current_week, challenge: challenge, user: participation.user)
-          if last_weekly_progress.updated == true
+          if last_weekly_progress.updated
             if last_weekly_progress.progress >= challenge.goal_qty
               weekly_progress.balance = last_weekly_progress.balance
               last_weekly_progress.updated = true
             else
               last_weekly_progress.balance -= challenge.weekly_discount
               weekly_progress.balance = last_weekly_progress.balance
-              # chequear el caso de end_date + 1 si es un dia despues volveria a calcular ambos balances
               last_weekly_progress.updated = true
               challenge.participations.where.not(user: participation.user).each do |member|
                 last_weekly_progress_member = WeeklyProgress.find_by(week_num: (challenge.current_week - 1), challenge: challenge, user: member.user)

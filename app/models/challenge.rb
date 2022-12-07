@@ -34,9 +34,13 @@ class Challenge < ApplicationRecord
   end
 
   def current_week
-    return nil if Date.today < start_date || Date.today > end_date
+    return nil if Date.today < start_date || Date.today > end_date + 1
 
-    ((Date.today - start_date).to_i / 7) + 1
+    if Date.today == (end_date + 1)
+      ((Date.today - start_date).to_i / 7) + 2
+    else
+      ((Date.today - start_date).to_i / 7) + 1
+    end
   end
 
   def is_update_day
