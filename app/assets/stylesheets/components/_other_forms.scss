@@ -10,40 +10,63 @@
 }
 
 .container-form-cards {
-  // background-color: rgba(0, 0, 0, 0.573);
-  padding: 10px;
-  margin: 10px;
+  //background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.7);
+  //background-color: rgba(241, 191, 10, 1);
+  padding: 20px;
+  margin: 100px 15px;
   border-radius: 10px;
-
-  h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .rules{
+    width: 100%;
+    margin-top: 10px;
+    font-size: smaller;
     text-align: center;
   }
-  p {
-    font-size: 10px;
-    padding-top: 0;
-  }
+
 
   .form-avatar {
-
+    width: 100%;
     display: flex;
-    margin: 7px;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .wrapper-card {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    margin: 0px 0px;
+    height: 110px;
+    img {
+      width: 90px;
+      transform: rotate(10deg);
+      opacity: 0.9;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      //color: white;
+    }
+    .sting{
+      margin-top: 3px;
+      font-size: larger;
+      font-weight: bold;
+
+    }
+
   }
 
-}
-
-.wrapper-card {
-  display: flex;
-  flex-direction: row;
-
-}
-.card-size {
-
-  img {
-    width: 100px;
-    height:105px;
-    transform: rotate(30deg);
-  }
 }
