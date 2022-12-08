@@ -25,9 +25,7 @@
     height: 80px;
     border-radius: 50%;
     align-items: center !important;
-
-
-  }
+    }
 
   .imgfondo{
       z-index: 100 !important;
@@ -43,6 +41,21 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
+
+    }
+
+  }
+
+  .weekly-prog{
+    display: flex;
+    flex-direction: column;
+    .list-group{
+      display: flex;
+      flex-direction: column;
+      .image-percent{
+
+        .weekly-value{}
+      }
 
     }
 
