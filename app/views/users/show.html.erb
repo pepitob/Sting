@@ -12,6 +12,15 @@
   <p>Ran 5k this week%</p>
   <p>Biked 10k this week</p>
 </div>
+
+<div class="text-center">
+  <% if @user.connected_strava %>
+    <%= image_tag asset_path('api_logo_pwrdBy_strava_horiz_white.png')  %>
+  <% else %>
+    <%= link_to image_tag("btn_strava_connectwith_orange.png"), @redirect_url  %>
+  <% end %>
+</div>
+
  <%= link_to "edit", edit_user_registration_path(@user), class: "btn btn-sting" %>
  <%= link_to "back", challenges_path(@user), class: "btn btn-sting" %>
 <%# <%= cl_image_tag("THE_IMAGE_ID_FROM_LIBRARY",
@@ -23,12 +32,3 @@
 
 
 <%# if @user == current user, then show  %>
-
-<%= link_to image_tag("btn_strava_connectwith_orange.png"), @redirect_url  %>
-<% @user.workouts.each do |workout| %>
-  <%= workout.category %>
-  <%= workout.distance %>
-  <%= workout.duration %>
-  <%= workout.date %>
-  <br>
-<% end %>

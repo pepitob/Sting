@@ -25,7 +25,7 @@ class ParticipationsController < ApplicationController
     @user_participation = Participation.find(params[:id])
     authorize @user_participation
     @card = Card.find(params[:card])
-    @participations = Participation.where(challenge: @challenge).where.not(user: current_user)
+    @participations = Participation.where(challenge: @challenge)
     @week = @challenge.current_week
 
   end
