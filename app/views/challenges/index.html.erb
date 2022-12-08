@@ -10,7 +10,7 @@
         <div class="user-summary">
           <h2 class="background-color-black-text-yellow" >Hello <%= current_user.first_name %>!</h2>
           <p><i class="fa-solid fa-dumbbell"></i> <%= current_user.participations.count %> active challenges</p>
-          <p><i class="fa-sharp fa-solid fa-person-running"></i> <%= current_user.workouts.sum(:distance) %> Km. completed this week</p>
+          <p><i class="fa-sharp fa-solid fa-person-running"></i> <%= current_user.workouts.sum(:distance) %> Km. done this week</p>
           <p><i class="fa-sharp fa-solid fa-clock"></i> <%= current_user.workouts.sum(:duration) %> Hours this week</p>
         </div>
       </div>
