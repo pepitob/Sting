@@ -16,5 +16,5 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { minimum: 6 }, uniqueness: true
   validates :bio, presence: true
   validates :photo, presence: true
-  after_create_commit { broadcast_append_to "users" }
+  # after_create_commit { broadcast_append_to "users" }
 end
