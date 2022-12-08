@@ -1,7 +1,16 @@
-<h1>Whom do you want to Sting ?</h1>
-
-<%@participations.each do |participation|  %>
-  <%= link_to apply_card_challenge_card_path(@challenge, @card, {user_id: participation.user.id}) do %>
-    <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
+<div class=container-form-cards>
+  <div class=wrapper-card>
+    <h1>Who do you want to Sting?</h1>
+    <%# <p>A Stinger card with a positive percentage will add to the total amount someone has to workout this week and a negative percentage will help reduce the total weekly goal.</p> %>
+    <div class=card-size>
+        <%= image_tag @card.action %>
+      </div>
+    </div>
+  <div class=form-avatar>
+  <%@participations.each do |participation|  %>
+    <%= link_to apply_card_challenge_card_path(@challenge, @card, {user_id: participation.user.id}) do %>
+      <%= cl_image_tag participation.user.photo.key, class: "avatar-large form-avatar" %>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
+</div>
