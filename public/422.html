@@ -43,18 +43,22 @@ body {
   border-radius: 7px;
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
 }
+
+h1 {
+  text-align: center;
+  }
+
+img {
+    display: block;
+    margin: 0 auto;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/422.html -->
   <div class="hit-the-floor">422</div>
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  <h1>The change you wanted was rejected. Maybe you tried to change something you didn't have access to.</h1>
+  <img src="homepage_stingy.png">
 </body>
 </html>
