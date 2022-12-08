@@ -42,8 +42,10 @@ class ChallengesController < ApplicationController
     @message.challenge = @challenge
     @challenge = Challenge.find(params[:id])
     authorize @challenge
+    @week = @challenge.current_week
     @user_participation = Participation.find_by(challenge: @challenge, user: current_user)
     @user_cards = Card.where(participation: @user_participation)
+    @user_last_progress = WeeklyProgress.find_by(challenge: @challenge, user: current_user, week_num: @week)
   end
 
   private
