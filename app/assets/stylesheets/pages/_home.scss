@@ -10,11 +10,19 @@ body {
 .home-title {
   text-align: center;
   padding-top: 20px;
+
  h1 {
   color: #f5c20b;
   font-size: 100px;
+  //font-style: bold;
+  font-weight: 1000;
+  letter-spacing: 8px;
+  //text-shadow: black 6px 0px;
+  }
+
 }
-}
+
+
 
 .home-button {
   text-align: center;
@@ -44,8 +52,8 @@ body {
 }
 
 .home {
-margin-top: 140px;
-margin-bottom: 140px;
+  margin-top: 140px;
+  margin-bottom: 140px;
 }
 
 .steps {

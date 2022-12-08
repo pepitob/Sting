@@ -1,34 +1,38 @@
 <div class = "container">
+  <%# alternative %>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-6">
       <div class="card welcome-mesage">
-        <div class="user-pic"><%= cl_image_tag current_user.photo.key, class:"avatar-large" %></div>
+        <div class="user-balance">
+          <h1>$ <%= @total_balance.to_i %></h1>
+          <p>your balance</p>
+        </div>
         <div class="user-summary">
           <h2>Hello <%= current_user.first_name %>!</h2>
-          <p>100$ total balance</p>
+          <p><%= @challenges.count %> Total challenges</p>
           <p><i class="fa-duotone fa-shirt-running"></i>14km Run this week</p>
         </div>
       </div>
     </div>
   </div>
-<%# Challenges cards %>
+  <%# Challenges cards %>
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="center-element"><h1 style="color=white;">Your <span class="yellow-border-font">Challenges</span></h1></div>
       <div class="background-color-black"><%= link_to "Add new challenge", new_challenge_path%></div>
+      <div class="btn-plus"><%= link_to new_challenge_path do %><i class="fa-solid fa-circle-plus"></i><% end %></div>
       <% @challenges.each do |challenge| %>
         <div class="card">
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
               <%# Circle progress in js %>
-
               <div data-controller="chart" class="circle-prog" data-value= <%= (challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>>
-
               </div>
 
               <div class="challenge-summary">
                 <h2 class="center-element"><%= challenge.name %></h2>
-                <p><%= challenge.category %> <%= challenge.goal_qty %> <%= challenge.unit %> per week</p>
+                <p><i class="fa-solid fa-calendar-days"></i></i> From <%= challenge.start_date.strftime('%b-%w-%y') %><br> to <%= challenge.end_date.strftime('%b-%w-%y') %></p>
+                <p>Week goal: <%= challenge.category %> <%= challenge.goal_qty %> <%= challenge.unit %></p>
                 <p>Total goal: <%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> </p>
                 <div class="list-group">
                   <% challenge.participations.each do |participation| %>
@@ -39,15 +43,9 @@
                 </div>
               </div>
             </div>
-
-            <%# <% challenge.participations.each do |participation| %>
-              <%# <%= participation.user.name %>
-            <%# <% end %>
-            <%# <%= challenge.weekly_progress.progress / challenge.challenge_qty %>
-            <%# <%= challenge.weekly_progress.balance %>
           <% end %>
         </div>
       <% end %>
-
+    </div>
   </div>
 </div>

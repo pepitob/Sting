@@ -52,56 +52,50 @@
         </div>
 
 
-        <%# <div data-controller="clipboard" data-clipboard-success-content="Copied!">
+        <div data-controller="clipboard" data-clipboard-success-content="Copied!">
           <input type="text" value="Click the button to copy me!" data-clipboard-target="source" />
            <button type="button" data-action="clipboard#copy" data-clipboard-target="button">Copy to clipboard</button>
-        </div> %>
-        <%# <div data-controller="clipboard"  class="share">
-          <input data-clipboard-target="source" type="text" value= "<%=new_challenge_participation_path(@challenge)%>
-          <%# <button data-action="clipboard#copy"><i  class="fa-solid fa-link"></i></button>
-        </div> %>
-
-        <%# <div data-controller="clipboard" data-action="click->clipboard#copy"  data-clipboard-target="button" >
-          <%= data-clipboard-target="source" link_to new_challenge_participation_path(@challenge) do%>
-          <%# <i  class="fa-solid fa-link"></i>
-          <% end %>
-        <%# </div> %>
-
-<div class="share">
-    <%= link_to new_challenge_participation_path(@challenge) do%>
-      <i class="fa-solid fa-link"></i>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-<div data-controller="reveal" data-reveal-hidden-class="d-none">
-  <button data-action="click->reveal#toggle" type="button" class="btn btn-sting">Stinger Cards</button>
-
-  <div data-reveal-target="item" class="d-none mt-4">
-    <div class="card card-body">
-          <h2>Let's sting your enemies</h2>
-          <%# Each card %>
-          <div class= "d-flex flex-row">
-            <% @user_cards.each do |card| %>
-              <div class="flip-box">
-                <div class="flip-box-inner">
-                  <div class="flip-box-front">
-                    <%= image_tag "face_down_card.png", alt: "StingyCard", class:"StingyCard" %>
-                  </div>
-                  <div class="flip-box-back">
-                  <%# esto va a ser un boton %>
-                  <%= link_to "apply cards", select_participant_challenge_participation_path(@challenge, @user_participation, card: card.id), class: "btn btn-primary"%>
-                    <%= image_tag card.action , alt: "CardValue", class:"CardValue" %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
         </div>
+
+
+        <div data-controller="clipboard" class="share" data-value=<%=new_challenge_participation_path(@challenge)%> data-action="clipboard#copy">
+          <i class="fa-solid fa-link"></i>
+        </div>
+      </div>
+
+
+<% if @challenge.participations.count > 1 %>
+  <div data-controller="reveal" data-reveal-hidden-class="d-none">
+    <button data-action="click->reveal#toggle" type="button" class="btn btn-sting">Stinger Cards</button>
+
+    <div data-reveal-target="item" class="d-none mt-4">
+      <div class="card card-body">
+            <h2>Let's sting your enemies</h2>
+            <%# Each card %>
+            <div class= "d-flex flex-row">
+              <% @user_cards.each do |card| %>
+                <% if card.used == false %>
+                  <div class="flip-box">
+                    <div class="flip-box-inner">
+                      <div class="flip-box-front">
+                        <%= image_tag "face_down_card.png", alt: "StingyCard", class:"StingyCard" %>
+                      </div>
+                      <div class="flip-box-back">
+                        <%# esto va a ser un boton %>
+                        <%= link_to select_participant_challenge_participation_path(@challenge, @user_participation, card: card.id) do%>
+                          <%= image_tag card.action , alt: "CardValue", class:"CardValue" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+                <% end %>
+              <% end %>
+          </div>
+    </div>
   </div>
-</div>
+<% else %>
+<% end %>
 
 
 
