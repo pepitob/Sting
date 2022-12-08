@@ -15,7 +15,7 @@ class CardsController < ApplicationController
     @card.value > 0 ? stingy_says = "That sucks!" : stingy_says = "Lucky them!"
     @card.value > 0 ? verb = "stung" : verb = "spared"
     @card.value > 0 ? change_word = "more" : change_word = "less"
-    message.content = "🃏 #{sender} #{verb} #{recipient}. #{User.find(params[:user_id]).first_name} now has to complete #{(@weekly_progress.week_goal * @card.value).to_i.abs} #{@weekly_progress.unit.downcase} #{change_word} to reach their weekly goal. #{stingy_says}"
+    message.content = "🃏 #{sender} #{verb} #{recipient}. #{User.find(params[:user_id]).first_name} now has to complete #{(@weekly_progress.week_goal * @card.value).abs} #{@weekly_progress.unit.downcase} #{change_word} to reach their weekly goal. #{stingy_says}"
     message.challenge = @challenge
     message.user = current_user
     message.stingy = true

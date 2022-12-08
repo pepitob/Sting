@@ -32,7 +32,7 @@
               <%# Circle progress in js %>
 
               <div class="circle-prog">
-                <div data-controller="chart" data-value= <%=(challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty)*100 %>></div>
+                <div data-controller="chart" data-value= <%=(challenge.user.weekly_progresses.sum(:progress) / challenge.goal_qty)*100 %>></div>
                 <p>Weekly progress</p>
               </div>
 
