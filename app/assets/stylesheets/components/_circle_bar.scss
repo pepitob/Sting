@@ -48,15 +48,14 @@
 
   .weekly-prog{
     display: flex;
-    flex-direction: column;
-    .list-group{
+    flex-direction: row;
+    .wrapping{
       display: flex;
       flex-direction: column;
-      .image-percent{
-
-        .weekly-value{}
+      .weekly-value{
+        text-align: center;
+        font-size: 12px;
       }
-
     }
 
   }
