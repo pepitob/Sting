@@ -4,13 +4,14 @@
     <div class="col-12 col-sm-6">
       <div class="card welcome-mesage">
         <div class="user-balance">
-          <h1>$ <%= @total_balance.to_i %></h1>
-          <p>your balance</p>
+          <h1><%= @total_balance.to_i %> €</h1>
+          <p>total balance</p>
         </div>
         <div class="user-summary">
-          <h2>Hello <%= current_user.first_name %>!</h2>
-          <p><%= @challenges.count %> Total challenges</p>
-          <p><i class="fa-duotone fa-shirt-running"></i>14km Run this week</p>
+          <h2 class="background-color-black-text-yellow" >Hello <%= current_user.first_name %>!</h2>
+          <p><i class="fa-solid fa-dumbbell"></i> Some text challenges</p>
+          <p><i class="fa-sharp fa-solid fa-medal"></i> 14km Run this week</p>
+          <p><i class="fa-sharp fa-solid fa-medal"></i> Some text challenges</p>
         </div>
       </div>
     </div>
@@ -19,22 +20,28 @@
   <div class="row justify-content-center">
     <div class ="col-12">
       <div class="center-element"><h1 style="color=white;">Your <span class="yellow-border-font">Challenges</span></h1></div>
-      <div class="background-color-black"><%= link_to "Add new challenge", new_challenge_path%></div>
-      <div class="btn-plus"><%= link_to new_challenge_path do %><i class="fa-solid fa-circle-plus"></i><% end %></div>
+      <div class="background-color-black "><i class="fa-solid fa-circle-plus"></i> <%= link_to "Add new challenge", new_challenge_path%></div>
+      <%# <div class="btn-plus"><%= link_to new_challenge_path do %>
+        <%# <i class="fa-solid fa-circle-plus"></i>
+        <% end %>
+      <%# </div> %>
       <% @challenges.each do |challenge| %>
         <div class="card">
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
               <%# Circle progress in js %>
-              <div data-controller="chart" class="circle-prog" data-value= <%= (challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty) %>>
+
+              <div class="circle-prog">
+                <div data-controller="chart" data-value= <%=(challenge.user.weekly_progresses.sum(:progress) / challenge.challenge_qty)*100 %>></div>
+                <p>Weekly progress</p>
               </div>
 
               <div class="challenge-summary">
                 <h2 class="center-element"><%= challenge.name %></h2>
-                <p><i class="fa-solid fa-calendar-days"></i></i> From <%= challenge.start_date.strftime('%b-%w-%y') %><br> to <%= challenge.end_date.strftime('%b-%w-%y') %></p>
-                <p>Week goal: <%= challenge.category %> <%= challenge.goal_qty %> <%= challenge.unit %></p>
-                <p>Total goal: <%= challenge.category %> <%= challenge.challenge_qty %> <%= challenge.unit %> </p>
-                <div class="list-group">
+                <p><i class="fa-solid fa-calendar-days"></i>  <%= challenge.start_date.strftime('%b %w, %Y') %> - <%= challenge.end_date.strftime('%b %w, %Y') %></p>
+                <p><i class="fa-solid fa-flag"></i>  <%= challenge.category %>: <strong><%= challenge.goal_qty %></strong> <%= challenge.unit %>/week</p>
+                <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%=  %>x</strong></p>
+                <div class="list-group mt-3">
                   <% challenge.participations.each do |participation| %>
                       <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                         <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
