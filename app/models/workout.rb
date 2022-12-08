@@ -34,6 +34,7 @@ class Workout < ApplicationRecord
               workout_text = "🏅 #{@weekly_progress.user.first_name} has completed a workout: #{@workout.distance}km in #{@workout.duration} hours."
               goal_text = "🚩 #{@weekly_progress.user.first_name} reached their weekly goal!"
               @weekly_progress.progress >= participation.challenge.goal_qty ? message.content = workout_text + goal_text : message.content = workout_text
+              message.challenge = participation.challenge
               message.user = participation.challenge.user
               message.stingy = true
               message.save!

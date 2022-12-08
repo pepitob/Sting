@@ -50,7 +50,7 @@ class Challenge < ApplicationRecord
     return true  if Date.today == end_date + 1
     return false if current_week == 1
 
-    (((Date.today - start_date).to_i - 1) % 7).zero?
+    (((Date.today - start_date).to_i) % 7).zero?
   end
 
   private
