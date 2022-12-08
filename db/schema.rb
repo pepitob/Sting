@@ -98,8 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_133010) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "stingy", default: false
     t.bigint "challenge_id", null: false
+    t.boolean "stingy", default: false
     t.index ["challenge_id"], name: "index_messages_on_challenge_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

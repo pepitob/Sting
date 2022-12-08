@@ -119,11 +119,17 @@
 
 
 
-  <div data-controller="insert-message" class="messagebox">
-    <div data-insert-message-target="messages" class="allmessages">
-      <% @challenge.messages.each do |m|  %>
-        <%= render "messages/message", message: m %>
+
+<div data-controller="insert-message" class="messagebox">
+  <div data-insert-message-target="messages" class="allmessages">
+    <% @challenge.messages.each do |m| %>
+      <% if m.user == current_user %>
+        <%= render "messages/message", message: m, css_class_one: "message-current-user" %>
+         <%# <% elsif m.stingy %>
+        <%# <%= render "messages/message", message: m, css_class_one: "message-stingy" %>
+      <% else %>
+        <%= render "messages/message", message: m, css_class_one: "message-user" %>
       <% end %>
-    </div>
-      <%= render "messages/new_message", message: @message, challenge: @challenge %>
+    <% end %>
+
   </div>
