@@ -1,6 +1,8 @@
 .circle-progress-value {
 	stroke-width: 6px;
 	stroke: $dark_blue;
+  //stroke: #59A2B0;
+  stroke: #f1bf0a;
 	stroke-dasharray: 25 5;
 }
 .circle-progress-circle {
@@ -10,7 +12,7 @@
 .circle-progress-text {
 	font-weight: bold;
   font-size: larger;
-	fill: $dark_blue;
+	fill: black;
 }
 
 

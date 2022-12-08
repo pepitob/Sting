@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container new-challenge">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new challenge</h1>
+      <h1 class="center-element">Create a new challenge</h1>
       <%= simple_form_for @challenge do |f| %>
         <%= f.input :name, as: :string, label: "Challenge Name", placeholder: "Team Sting Running Club" %>
         <div class="mb-2">
           <%= f.label "Type of Activity:" %>
           <br>
-          <%= f.select :category, collection: Challenge::CATEGORY, class: "form-dropdown"%>
+          <span class="form-dropdown"><%= f.select :category, Activity: Challenge::CATEGORY%></span>
         </div>
         <%= f.input :goal_qty, as: :float , label: "How many Km or Hours per week?", placeholder: "10"%>
         <div class="mb-2">
@@ -20,9 +20,9 @@
         <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
         <%= f.input :price, as: :float, label: "How much money are you willing to lose?", placeholder: "30"%>
         <div class="mb-2">
-          <%= f.label "Stinger Cards per person for duration of Challenge" %>
+          <%= f.label "Stinger Cards" %>
           <br>
-          <%= f.select :card_num, collection: Challenge::CARDS, class: "form-dropdown" %>
+          <span class="form-dropdown"><%= f.select :card_num, Challenge::CARDS%></span>
         </div>
         <br>
         <div class="text-center m-5">

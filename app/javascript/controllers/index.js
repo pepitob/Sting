@@ -25,3 +25,6 @@ application.register('scroll-reveal', ScrollReveal)
 
 import Reveal from 'stimulus-reveal-controller'
 application.register('reveal', Reveal)
+
+import Clipboard from 'stimulus-clipboard'
+application.register('clipboard', Clipboard)
