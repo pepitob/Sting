@@ -25,8 +25,8 @@ class UsersController < ApplicationController
 
   def create_redirect_url
     @redirect_url = @client.authorize_url(
-      redirect_uri: "http://localhost:3000/users/#{params[:id]}",
-      # redirect_uri: "https://www.stingfit.live/users/#{params[:id]}",
+      # redirect_uri: "http://localhost:3000/users/#{params[:id]}",
+      redirect_uri: "https://www.stingfit.live/users/#{params[:id]}",
       approval_prompt: 'force',
       response_type: 'code',
       scope: 'activity:read_all',
