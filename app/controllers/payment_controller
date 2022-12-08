@@ -1,0 +1,28 @@
+require 'stripe'
+require 'sinatra'
+
+# This is a public sample test API key.
+# Don’t submit any personally identifiable information in requests made with this key.
+# Sign in to see your own test API key embedded in code samples.
+Stripe.api_key = 'sk_test_CGGvfNiIPwLXiDwaOfZ3oX6Y'
+
+set :static, true
+set :port, 4242
+
+YOUR_DOMAIN = 'http://localhost:4242'
+
+post '/create-checkout-session' do
+  content_type 'application/json'
+
+  session = Stripe::Checkout::Session.create({
+    line_items: [{
+      # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
+      price: price_1MCTdXC8jW9aS346x7n2QY9w,
+      quantity: 1,
+    }],
+    mode: 'payment',
+    success_url: DOMAIN + '/success',
+    cancel_url: DOMAIN + '/cancel',
+  })
+  redirect session.url, 303
+end
