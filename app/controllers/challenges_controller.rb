@@ -3,6 +3,16 @@ class ChallengesController < ApplicationController
   def index
     @challenges = policy_scope(Challenge) # returns a Challenge.all
     @challenges = @challenges.select { |challenge| challenge.participations.any? { |participation| participation.user == current_user}}
+    @total_balance = 0
+    @challenges.each do |challenge|
+      if Date.today >= challenge.start_date
+        week = challenge.current_week
+        wp = WeeklyProgress.find_by(week_num: week, user_id: current_user, challenge_id: challenge.id)
+        @total_balance += wp.balance
+      else
+        @total_balance += challenge.price
+      end
+    end
   end
 
   def new
@@ -36,8 +46,15 @@ class ChallengesController < ApplicationController
     @message.challenge = @challenge
     @challenge = Challenge.find(params[:id])
     authorize @challenge
+
     @user_participation = Participation.find_by(challenge: @challenge, user: current_user)
     @user_cards = Card.where(participation: @user_participation)
+    if Date.today >= @challenge.start_date
+      @week = @challenge.current_week
+      @user_last_progress = WeeklyProgress.find_by(challenge: @challenge, user: current_user, week_num: @week)
+    else
+      @user_last_progress = WeeklyProgress.find_by(challenge: @challenge, user: current_user, week_num: 1)
+    end
   end
 
   private
@@ -55,7 +72,4 @@ class ChallengesController < ApplicationController
     params.require(:message).permit(:content)
   end
 
-  # def set_cards
-  #   @card = Card.find([:participation_id])
-  # end
 end

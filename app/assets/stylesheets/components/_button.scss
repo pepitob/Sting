@@ -23,6 +23,7 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.75);
   font-family: "Bebas Neue", cursive;;
   font-size: larger;
+
 }
 
 .btn-sting:hover {
@@ -96,4 +97,14 @@
   //text-shadow:   #01ffff 1px 0px , #ff00ff -1px 0px;
   border: 2px solid rgba(255, 255, 255, 0.6);
   background-color: transparent;
+}
+
+.btn-plus{
+  i{
+    color: white;
+    position: absolute;
+    position: sticky;
+  }
+  text-align: right;
+  font-size: 50px;
 }

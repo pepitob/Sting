@@ -1,5 +1,5 @@
 .card {
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: white;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   padding: 7px 10px;
@@ -25,7 +25,7 @@
 .card h2 {
   font-size: 20px;
   // font-family: Amatic SC;
-  color: $dark_blue;
+  color: black;
 }
 
 
@@ -47,14 +47,31 @@
   }
   .user-summary{
     margin-bottom: 0;
+    text-align: center ;
     h2{
       font-size: 20px;
+      color:  #f1bf0a;
     }
     p{
       color: grey;
+      font-size: 14px;
+      text-align: left;
+      margin-bottom: 2px;
     }
   }
-
+  .user-balance{
+    align-self: center;
+    h1{
+       font-size: 60px;
+       margin-bottom: 0;
+       color: black;
+    }
+    p{
+      color: grey;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
 }
 
 //challenge index challenge cards
@@ -64,24 +81,38 @@
   justify-content: space-between;
 
   .circle-prog{
-
-    align-self: center;
+    display: flex;
+    flex-direction:column;
     justify-content: center;
+    align-content: center;
     width: 30%;
     height: 150px;
-    align-items: center;
     background-color: white;
-    margin-right: 3px;
+    padding-top: 15px ;
+
+    p{
+      color: grey;
+      margin-top: 10px;
+      font-size: 12px;
+      text-align: center;
+    }
 
   }
   .challenge-summary{
     margin-left: 2px;
     h2{
       font-size: 20px;
+      color: black;
+      text-decoration: underline ;
+      text-decoration-color: $our_yellow;
     }
     p{
       color: grey;
+      margin-bottom: 2px;
+      font-size: 14px;
+      text-align: left;
     }
+
   }
 
 }
@@ -143,6 +174,7 @@
   overflow: scroll;
 }
 
+
 .message-user {
   background-color: #DEDEDE!important;
   width: 910px;
@@ -152,4 +184,59 @@
   background-color: #DEDEDE;
   border-radius: 10px;
   width: 910px;
+
+
+// challenge show 1st card
+.dashboard{
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  //column-gap: 15px;
+  justify-content:space-between;
+    h1{
+      font-size: 60px;
+      margin-bottom: 0;
+      color: black;
+    }
+   p{
+     color: grey;
+     font-size: 12px;
+     text-align: center;
+   }
+   h2{
+    font-size: 35px;
+    margin-bottom: 0;
+    color: black;
+    }
+  .remaining-days{
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    background-color: white;
+    border-radius: 10px;
+    padding: 3px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .balance-info{
+    display: flex;
+    flex-direction: column;
+    column-gap: 4px;
+
+    .dashboard-item{
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      background-color: $our_yellow;
+      border-radius: 10px;
+      //margin: 5px;
+      padding: 3px 15px;
+      text-align: center;
+      p {
+        margin: 0;
+        color: white;
+        //font-weight: bold;
+      }
+    }
+  }
+
 }

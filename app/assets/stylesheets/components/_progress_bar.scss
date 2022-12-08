@@ -1,15 +1,55 @@
 
-.icon {
-  text-align: right;
-  margin-right: -3px;
-  display: block;
-}
-
 .progress{
   margin-bottom: 4px;
   margin-top: 5px;
   border-radius: 20px;
   margin-left: 10px;
   margin-right: 10px;
+  // z-index: 0;
+  overflow: visible;
 
+}
+
+.progress-bar{
+  background-color: $our_yellow;
+  display: flex;
+  flex-direction: row;
+  //justify-content: flex-end;
+  //column-gap: 10px;
+  // z-index:2;
+  position: relative;
+  overflow: visible;
+  border-radius: 15px;
+
+  .icon {
+    // z-index: 100;
+    position: absolute ;
+    right: -10px;
+    top: -3px;
+
+
+    // text-align: right;
+    // margin-right: -3px;
+  }
+  .value{
+    text-align: center;
+    color: black;
+    //position: relative;
+  }
+
+}
+
+.challenge-progress{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .progress{
+    width:77%
+  }
+  .challenge-info{
+    color: grey;
+    font-size: 10px;
+    width: 25%;
+  }
 }

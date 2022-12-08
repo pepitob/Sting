@@ -1,16 +1,8 @@
+
 .yellow-border-font {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #f1bf0a;
   text-align: center;
-}
-
-.background-color-grey {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #28292e;
-  color: #fafafa;
-  //font-size: 60px;
-  //line-height: 70px;
 }
 
 .center-element{
@@ -31,6 +23,26 @@
     color: #fafafa;
     font-family: 'Bebas Neue', cursive;
   }
+  //font-size: 60px;
+  //line-height: 70px;
+}
+
+.background-color-yellow {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f1bf0a;
+  color: black;
+  font-style: italic;
+  //font-size: 60px;
+  //line-height: 70px;
+}
+
+.background-color-black-text-yellow {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: black ;
+  color: #f1bf0a;
+
   //font-size: 60px;
   //line-height: 70px;
 }
