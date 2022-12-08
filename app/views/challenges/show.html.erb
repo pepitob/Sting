@@ -20,11 +20,11 @@
         <div class="balance-info">
           <div class="dashboard-item mb-3">
             <h2 ><%= @user_last_progress.balance %> €</h2>
-            <p>week balance</p>
+            <p>balance</p>
           </div>
           <div class="dashboard-item">
-            <h2><%= @user_last_progress.balance - @challenge.price%> €</h2>
-            <% if (@user_last_progress.balance - @challenge.price)>=0 %>
+            <h2><%= (@user_last_progress.balance - @challenge.price).abs %> €</h2>
+            <% if (@user_last_progress.balance - @challenge.price) >=0 %>
               <p>lost</p>
             <% else %>
               <p>won</p>
