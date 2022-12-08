@@ -25,9 +25,7 @@
     height: 80px;
     border-radius: 50%;
     align-items: center !important;
-
-
-  }
+    }
 
   .imgfondo{
       z-index: 100 !important;
@@ -44,6 +42,20 @@
       transform: translate(-50%, -50%);
 
 
+    }
+
+  }
+
+  .weekly-prog{
+    display: flex;
+    flex-direction: row;
+    .wrapping{
+      display: flex;
+      flex-direction: column;
+      .weekly-value{
+        text-align: center;
+        font-size: 12px;
+      }
     }
 
   }

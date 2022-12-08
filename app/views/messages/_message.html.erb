@@ -1,10 +1,10 @@
-<ul class="message d-flex flex-column">
+<ul class="message d-flex flex-column <%= local_assigns[:css_class_one] %>">
   <% if message.stingy %>
     <div style="margin-top:5px;" class="user_info">
       <%= image_tag asset_path('homepage_stingy.png'), class: "avatar bg-light" %>
       Stingy
     </div>
-    <div class="message_content" > <%= message.content %> </div>    
+    <div class="message_content" > <%= message.content %> </div>
   <% else %>
     <div style="margin-top:5px;" class="user_info">
       <%= cl_image_tag message.user.photo.key, class: "avatar" %>

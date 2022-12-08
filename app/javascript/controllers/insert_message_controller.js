@@ -19,6 +19,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         this.messagesTarget.insertAdjacentHTML("beforeend", data.inserted_item)
+        console.log(data.inserted_item)
         this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
         this.formTarget.outerHTML = data.form
       })

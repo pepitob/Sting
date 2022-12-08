@@ -132,10 +132,6 @@
   text-align:right;
 }
 
-.message{
-  background-color: #e4eefd;
-  border-radius: 10px;
-}
 
 .message_content{
   margin-left:30px;
@@ -177,6 +173,17 @@
   height: 440px;
   overflow: scroll;
 }
+
+
+.message-user {
+  background-color: #DEDEDE!important;
+  width: 910px;
+}
+
+.message-current-user {
+  background-color: #DEDEDE;
+  border-radius: 10px;
+  width: 910px;
 
 
 // challenge show 1st card
@@ -231,4 +238,5 @@
       }
     }
   }
+
 }
