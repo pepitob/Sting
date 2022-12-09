@@ -49,6 +49,7 @@
   .weekly-prog{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     .wrapping{
       display: flex;
       flex-direction: column;
