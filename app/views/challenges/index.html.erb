@@ -33,7 +33,7 @@
 
               <div class="circle-prog">
                 <% if Date.today >= challenge.start_date %>
-                  <div data-controller="chart" data-value= <%= (WeeklyProgress.find_by(challenge: challenge, user: current_user, week_num: challenge.current_week).progress / challenge.goal_qty)*100 %>></div>
+                  <div data-controller="chart" data-value= <%= (WeeklyProgress.find_by(challenge: challenge, user: current_user, week_num: challenge.current_week).progress / WeeklyProgress.find_by(challenge: challenge, user: current_user, week_num: challenge.current_week).week_goal.round(1))*100 %>></div>
                   <p>Weekly progress</p>
                 <% else %>
                   <div data-controller="chart" data-value= <%= 0 %>></div>
