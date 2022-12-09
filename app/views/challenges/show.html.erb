@@ -64,13 +64,13 @@
           <% @challenge.participations.each do |participation| %>
             <div class="wrapping">
               <div class="list-group image-percent">
-                <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= 70%>>
+                <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week).progress %>>
                     <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                       <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                     </div>
                 </div>
               </div>
-              <span class="weekly-value"><%= participation.user.weekly_progresses.sum(:progress)%> <%= @challenge.unit %><br> achieved</span>
+              <span class="weekly-value"><%= participation.user.weekly_progresses.sum(:progress).round(1) %> <%= @challenge.unit %><br> achieved</span>
             </div>
           <% end %>
         </div>
