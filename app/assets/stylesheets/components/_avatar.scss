@@ -1,18 +1,22 @@
 .avatar-profile {
-  width: 250px;
+  width: 100px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.75);
-  border: $light_blue 20px solid;
+  margin-right: 20px;
+  // border: black 15px solid;
 }
 
 .avatar-name {
   // display: flex;
   align-items: center;
   // justify-content: center;
-  margin-top: 50px !important;
-  font-size: 30px;
   text-align: center;
   color: #f5c20b !important;
+  display: flex;
+  text-align: center;
+  h1 {
+    font-size: 20px;
+  }
 }
 
 
