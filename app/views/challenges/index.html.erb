@@ -10,8 +10,8 @@
         <div class="user-summary">
           <h2 class="background-color-black-text-yellow" >Hello <%= current_user.first_name %>!</h2>
           <p><i class="fa-solid fa-dumbbell"></i> <%= current_user.participations.count %> active challenges</p>
-          <p><i class="fa-sharp fa-solid fa-person-running"></i> <%= current_user.workouts.sum(:distance) %> Km. done this week</p>
-          <p><i class="fa-sharp fa-solid fa-clock"></i> <%= current_user.workouts.sum(:duration) %> Hours this week</p>
+          <p><i class="fa-sharp fa-solid fa-person-running"></i> <%= current_user.workouts.sum(:distance).round(1) %> Km. done this week</p>
+          <p><i class="fa-sharp fa-solid fa-clock"></i> <%= current_user.workouts.sum(:duration).round(1) %> Hours this week</p>
         </div>
       </div>
     </div>
@@ -44,11 +44,11 @@
               <div class="challenge-summary">
                 <h2 class="center-element"><%= challenge.name %></h2>
                 <p><i class="fa-solid fa-calendar-days"></i>  <%= challenge.start_date.strftime('%-d %h, %C%y') %> - <%= challenge.end_date.strftime('%-d %h, %C%y') %></p>
-                <p><i class="fa-solid fa-flag"></i>  <%= challenge.category %>: <strong><%= challenge.goal_qty %></strong> <%= challenge.unit %>/week</p>
+                <p><i class="fa-solid fa-flag"></i>  <%= challenge.category %>: <strong><%= challenge.goal_qty.round(1) %></strong> <%= challenge.unit %>/week</p>
                 <% if Date.today >= challenge.start_date %>
-                  <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= WeeklyProgress.find_by(challenge: challenge, user: current_user, week_num: challenge.current_week).balance %> €</strong></p>
+                  <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= WeeklyProgress.find_by(challenge: challenge, user: current_user, week_num: challenge.current_week).balance.round(1) %> €</strong></p>
                   <% else %>
-                  <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= challenge.price %> €</strong></p>
+                  <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= challenge.price.round(1) %> €</strong></p>
                 <% end %>
                 <div class="list-group mt-3">
                   <% challenge.participations.each do |participation| %>
