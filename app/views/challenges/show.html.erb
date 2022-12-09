@@ -51,7 +51,7 @@
                   <%# ( participation.user.weekly_progresses.sum(:progress)  / @challenge.challenge_qty ) * 100 %>
               </div>
             </div>
-            <span class="challenge-info"><%= WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week).progress.round(1) %> / <%= (@challenge.challenge_qty).round(1)%> <%= @challenge.unit %></span>
+            <span class="challenge-info"><%= participation.user.weekly_progresses.sum(:progress).round(1) %> / <%= (@challenge.challenge_qty).round(1)%> <%= @challenge.unit %></span>
           </div>
         <% end %>
       </div>
