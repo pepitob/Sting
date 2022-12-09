@@ -16,7 +16,7 @@ namespace :wp do
               last_weekly_progress.updated = true
               ## Notification
               message = Message.new
-              message.content = "💸 #{participation.user.first_name} lost #{challenge.weekly_discount}€ because they didn't reach their weekly goal last week."
+              message.content = "💸 #{participation.user.first_name} lost #{challenge.weekly_discount.round(1)}€ because they didn't reach their weekly goal last week."
               message.challenge = participation.challenge
               message.user = participation.user
               message.stingy = true
@@ -31,7 +31,7 @@ namespace :wp do
                 weekly_progress_member.save!
                 ## Notification
                 message = Message.new
-                message.content = "💰 #{member.user.first_name} earned #{challenge.weekly_discount / (challenge.members_count - 1)}€ because #{participation.user.first_name} didn't reach their weekly goal last week."
+                message.content = "💰 #{member.user.first_name} earned #{(challenge.weekly_discount / (challenge.members_count - 1)).round(1)}€ because #{participation.user.first_name} didn't reach their weekly goal last week."
                 message.challenge = participation.challenge
                 message.user = member.user
                 message.stingy = true
