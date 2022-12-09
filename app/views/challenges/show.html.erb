@@ -70,7 +70,7 @@
                     </div>
                 </div>
               </div>
-              <span class="weekly-value"><%= participation.user.weekly_progresses.sum(:progress).round(1) %> <%= @challenge.unit %><br> achieved</span>
+              <span class="weekly-value"><%= WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week).progress.round(1) %> <%= @challenge.unit %><br> achieved</span>
             </div>
           <% end %>
         </div>
