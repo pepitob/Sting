@@ -13,9 +13,9 @@ class ParticipationsController < ApplicationController
     @participation.user = current_user
     if @participation.save
       redirect_to challenge_path(@challenge)
-      flash[:success] = "You have join the group!"
+      flash[:success] = "You have joined the group!"
     else
-      flash.now[:error] = "Something went wrong. Are you in the group already ?"
+      flash.now[:error] = "You already joined this challenge"
       render :new, status: :unprocessable_entity
     end
   end
