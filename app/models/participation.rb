@@ -4,6 +4,8 @@ class Participation < ApplicationRecord
   has_many :cards
   after_create :create_weekly_progresses, :create_cards
 
+  validates :user, uniqueness: { scope: :challenge, message: "You already joined the challenge" }
+
   def create_weekly_progresses
     challenge.week_count.times do |i|
       weekly_progress = WeeklyProgress.new

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 center-element">
       <h1>Join challenge!</h1>
-      <%= simple_form_for [ @challenge, @participation] do |f| %>
+      <%= simple_form_for [ @challenge, @participation], local: true do |f| %>
         <%# <%= f.select :user_name, User.pluck(:name) %>
         <%# <%= f.select :user_id, User.pluck(:email), { multiple: true, size: 2 } %>
         <%= f.submit "Join challenge!", class: 'btn btn-sting' %>
@@ -10,3 +10,9 @@
     </div>
   </div>
 </div>
+
+<% flash.each do |type, message| %>
+  <% if message %>
+    <div class="alert alert-warning"><%= message %></div>
+  <% end %>
+<% end %>
