@@ -11,5 +11,6 @@
       <%= message.user.first_name %>
     </div>
     <div class="message_content" > <%= message.content %> </div>
+    <div class="message_date"> <%= message.created_at.strftime('%d %b %Y at %H:%M') %></div>
   <% end %>
 </ul>

@@ -139,10 +139,26 @@
   text-align:right;
 }
 
+.message {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
 
 .message_content{
   margin-left:18px;
   font-size: 12px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.message_date{
+  font-size: 12px;
+  text-align: right;
+  position: absolute;
+  top: 5px;
+  right: 18px;
 }
 
 .user_info {
