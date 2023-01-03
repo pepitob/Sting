@@ -5,6 +5,9 @@ import CircleProgress from 'js-circle-progress'
 export default class extends Controller {
 
   connect() {
+    if (this.element.hasChildNodes()) {
+      this.element.innerHTML = '';
+    }
     new CircleProgress(this.element, this.data)
   }
   // { value: 20, max: 100, }
