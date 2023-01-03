@@ -15,7 +15,7 @@ class Workout < ApplicationRecord
       @activities = user_client.athlete_activities
       @activities.each do |activity|
         if Workout.where(activity_id: activity.id).exists?
-        elsif ["Run", "Walk", "Ride", "Swim"].include? activity.type
+        elsif (["Run", "Walk", "Ride", "Swim"].include? activity.type) && (activity.date >= user.created_at)
           @workout = Workout.new
           @workout.category = activity.type
           @workout.distance = (activity.distance / 1000.00).round(2)
