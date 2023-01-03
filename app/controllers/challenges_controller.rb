@@ -51,9 +51,11 @@ class ChallengesController < ApplicationController
     @user_cards = Card.where(participation: @user_participation)
     if Date.today >= @challenge.start_date
       @week = @challenge.current_week
+      @all_last_progress = WeeklyProgress.find_by(challenge: @challenge, week_num: @week)
       @user_last_progress = WeeklyProgress.find_by(challenge: @challenge, user: current_user, week_num: @week)
     else
       @user_last_progress = WeeklyProgress.find_by(challenge: @challenge, user: current_user, week_num: 1)
+      @all_last_progress = WeeklyProgress.find_by(challenge: @challenge, week_num: 1)
     end
   end
 

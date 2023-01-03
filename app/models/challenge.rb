@@ -1,9 +1,8 @@
 class Challenge < ApplicationRecord
-  has_many :participations
-  has_many :weekly_progresses
+  has_many :participations, dependent: :delete_all
+  has_many :weekly_progresses, dependent: :delete_all
   has_many :participants, through: :participations, class_name: :user
-
-  has_many :cards, through: :participations
+  has_many :cards, through: :participations, dependent: :delete_all
   has_many :messages, dependent: :delete_all
 
   belongs_to :user
@@ -15,7 +14,7 @@ class Challenge < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :end_date_after_start_date
-  # validate :start_date_after_today
+  validate :start_date_after_today
   validates :goal_qty, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORY }
   validates :unit, presence: true, inclusion: { in: UNIT }
@@ -63,11 +62,9 @@ class Challenge < ApplicationRecord
     end
   end
 
-  # def start_date_after_today
-  #   if start_date < date.today
-  #     errors.add(:start_date, "Must be today or after today")
-  #   end
-  # end
+  def start_date_after_today
+    errors.add(:start_date, "Must be today or after today") if start_date < Date.today
+  end
 
   def set_challenge_qty
     if week_count <= 1
