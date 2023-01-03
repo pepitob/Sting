@@ -1,7 +1,7 @@
 class Participation < ApplicationRecord
   belongs_to :challenge
   belongs_to :user
-  has_many :cards
+  has_many :cards, dependent: :delete_all
   after_create :create_weekly_progresses, :create_cards
 
   def create_weekly_progresses

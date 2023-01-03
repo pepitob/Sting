@@ -58,19 +58,21 @@
 
 
       <%# Circle progress in js %>
+      <%# intead of @all_last_progress we had this code: %>
+      <%# WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week) %>
       <div class="card">
         <h2>Weekly goal: <span style="color:#f1bf0a;;"><%= @challenge.goal_qty%> <%= @challenge.unit%></span></h2>
         <div class="weekly-prog">
           <% @challenge.participations.each do |participation| %>
             <div class="wrapping">
               <div class="list-group image-percent">
-                <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week).progress / WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week).week_goal * 100 %>>
+                <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= @all_last_progress.progress / @all_last_progress.week_goal * 100 %>>
                     <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                       <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                     </div>
                 </div>
               </div>
-              <span class="weekly-value"><%= WeeklyProgress.find_by(challenge: @challenge, user: participation.user, week_num: @challenge.current_week).progress.round(1) %> <%= @challenge.unit %><br> achieved</span>
+              <span class="weekly-value"><%= @all_last_progress.progress.round(1) %> <%= @challenge.unit %><br> achieved</span>
             </div>
           <% end %>
         </div>
