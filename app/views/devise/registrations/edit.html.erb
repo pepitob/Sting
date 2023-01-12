@@ -51,8 +51,8 @@
 
 <div class="d-flex align-items-center">
   <div>Unhappy?</div>
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "white-text" %>
+  <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "white-text cancel" %>
 </div>
 
-<%= link_to "Back", :back, class: "btn btn-sting" %>
+<%= link_to "Back", :back, class: "btn btn-sting mt-3" %>
 </div>
