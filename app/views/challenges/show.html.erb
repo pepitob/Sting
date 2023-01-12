@@ -47,7 +47,9 @@
                 aria-valuemax="100"
                 style="width:<%= ( participation.user.weekly_progresses.sum(:progress) / @challenge.challenge_qty ).round(1) * 100%>%">
                   <%#<span class= "value"><%= ( participation.user.weekly_progresses.sum(:progress)  / @challenge.challenge_qty ) * 100 %>
-                  <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
+                  <%= link_to user_path(participation.user) do %>
+                    <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
+                  <% end %>
                   <%# ( participation.user.weekly_progresses.sum(:progress)  / @challenge.challenge_qty ) * 100 %>
               </div>
             </div>
