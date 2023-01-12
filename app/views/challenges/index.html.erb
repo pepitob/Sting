@@ -52,9 +52,11 @@
                 <% end %>
                 <div class="list-group mt-3">
                   <% challenge.participations.each do |participation| %>
+                    <%= link_to user_path(participation.user) do %>
                       <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                         <%= cl_image_tag participation.user.photo.key, class: "avatar" %>
                       </div>
+                    <% end %>
                   <% end %>
                 </div>
               </div>

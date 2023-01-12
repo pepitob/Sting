@@ -47,7 +47,9 @@
                 aria-valuemax="100"
                 style="width:<%= ( participation.user.weekly_progresses.sum(:progress) / @challenge.challenge_qty ).round(1) * 100%>%">
                   <%#<span class= "value"><%= ( participation.user.weekly_progresses.sum(:progress)  / @challenge.challenge_qty ) * 100 %>
-                  <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
+                  <%= link_to user_path(participation.user) do %>
+                    <span class= "icon"><%= cl_image_tag participation.user.photo.key, class:"avatar-small"%></span>
+                  <% end %>
                   <%# ( participation.user.weekly_progresses.sum(:progress)  / @challenge.challenge_qty ) * 100 %>
               </div>
             </div>
@@ -67,9 +69,11 @@
             <div class="wrapping">
               <div class="list-group image-percent">
                 <div data-controller="chart" class="imgfondo" data-chart-target="graph" data-value=<%= @all_last_progress.progress / @all_last_progress.week_goal * 100 %>>
+                  <%= link_to user_path(participation.user) do %>
                     <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= participation.user.first_name %>">
                       <%= cl_image_tag participation.user.photo.key, class: "avatar-progress stack-top" %>
                     </div>
+                  <% end %>
                 </div>
               </div>
               <span class="weekly-value"><%= @all_last_progress.progress.round(1) %> <%= @challenge.unit %><br> achieved</span>
