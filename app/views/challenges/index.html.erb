@@ -48,7 +48,7 @@
                 <% if Date.today >= challenge.start_date %>
                   <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= WeeklyProgress.find_by(challenge: challenge, user: current_user, week_num: challenge.current_week).balance.round(1) %> €</strong></p>
                   <% else %>
-                  <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= humanized_money_with_symbol(challenge.price) %></strong></p>
+                  <p><i class="fa-solid fa-coins"></i> Current Balance: <strong><%= (challenge.price_cents / 100).round(1) %> €</strong></p>
                 <% end %>
                 <div class="list-group mt-3">
                   <% challenge.participations.each do |participation| %>

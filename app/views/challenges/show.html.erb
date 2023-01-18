@@ -23,8 +23,8 @@
             <p>balance</p>
           </div>
           <div class="dashboard-item">
-            <h2><%= (@user_last_progress.balance - @challenge.price).abs.round(1) %> €</h2>
-            <% if (@user_last_progress.balance - @challenge.price) >=0 %>
+            <h2><%= (@user_last_progress.balance - (@challenge.price_cents / 100)).abs.round(1) %> €</h2>
+            <% if (@user_last_progress.balance - (@challenge.price_cents / 100)) >=0 %>
               <p>won</p>
             <% else %>
               <p>lost</p>
