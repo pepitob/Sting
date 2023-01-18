@@ -84,3 +84,4 @@ gem "cloudinary"
 gem 'strava-ruby-client'
 gem 'openssl'
 gem 'money-rails'
+gem 'stripe'
