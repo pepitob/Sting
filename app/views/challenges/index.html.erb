@@ -25,7 +25,7 @@
         <%# <i class="fa-solid fa-circle-plus"></i>
         <% end %>
       <%# </div> %>
-      <% @challenges.each do |challenge| %>
+      <% @active_challenges.each do |challenge| %>
         <div class="card">
           <%= link_to challenge_path(challenge) do %>
             <div class="challenge">
