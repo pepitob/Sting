@@ -12,7 +12,9 @@ class ParticipationsController < ApplicationController
     @participation.challenge = @challenge
     @participation.user = current_user
     if @participation.save
-      redirect_to challenge_path(@challenge)
+      # redirect_to challenge_path(@challenge)
+      redirect_to orders_path
+
       flash[:success] = "You have joined the group!"
     else
       flash.now[:error] = "You already joined this challenge"

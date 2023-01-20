@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
   def create
-    teddy = Teddy.find(params[:teddy_id])
-    order  = Order.create!(teddy: teddy, teddy_sku: teddy.sku, amount: teddy.price, state: 'pending', user: current_user)
+    participation = Participation.find(params[:participation_id])
+    order  = Order.create!(participation: participation, amount: participation.challenge.price, state: 'pending')
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: teddy.sku,
-        images: [teddy.photo_url],
-        amount: teddy.price_cents,
+        name: participation.challenge.name,
+        amount: participation.challenge.price_cents,
         currency: 'eur',
         quantity: 1
       }],
