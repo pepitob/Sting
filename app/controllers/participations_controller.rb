@@ -13,7 +13,8 @@ class ParticipationsController < ApplicationController
     @participation.user = current_user
     if @participation.save
       # redirect_to challenge_path(@challenge)
-      redirect_to orders_path
+      # redirect_to orders_path(participation_id: @participation.id)
+      create_order
 
       flash[:success] = "You have joined the group!"
     else
@@ -40,5 +41,25 @@ class ParticipationsController < ApplicationController
 
   def participation_params
     params.require(:participation).permit(:challenge_id, :user_id)
+  end
+
+  def create_order
+    participation = @participation
+    order  = Order.create!(participation: participation, amount: participation.challenge.price, state: 'pending')
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: participation.challenge.name,
+        amount: participation.challenge.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url: order_url(order),
+      cancel_url: order_url(order)
+    )
+
+    order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(order)
   end
 end
