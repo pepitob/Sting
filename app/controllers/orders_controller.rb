@@ -20,4 +20,9 @@ class OrdersController < ApplicationController
     order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
   end
+
+  def show
+    @order = Order.find(params[:id])
+    authorize @order
+  end
 end

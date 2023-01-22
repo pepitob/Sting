@@ -1,5 +1,9 @@
 class OrderPolicy < ApplicationPolicy
   def new?
-    user.present?
+    ture
+  end
+
+  def show?
+    true
   end
 end
