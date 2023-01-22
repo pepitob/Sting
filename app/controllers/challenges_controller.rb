@@ -2,7 +2,8 @@ class ChallengesController < ApplicationController
   # before_action :set_cards, only: %i[show]
   def index
     @challenges = policy_scope(Challenge) # returns a Challenge.all
-    @challenges = @challenges.select { |challenge| challenge.participations.any? { |participation| participation.user == current_user}}
+    @challenges = @challenges.select { |challenge| challenge.participations.any? { |participation| participation.user == current_user }}
+    @active_challenges = @challenges.select { |challenge| challenge.active? }
     @total_balance = 0
     @challenges.each do |challenge|
       if Date.today >= challenge.start_date
