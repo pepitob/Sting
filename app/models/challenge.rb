@@ -24,6 +24,8 @@ class Challenge < ApplicationRecord
   before_save :set_challenge_qty
   # validate :range_date
 
+  monetize :price_cents
+
   def week_count
     (end_date - start_date).to_i / 7 + 1
   end

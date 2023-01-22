@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :weekly_progresses, dependent: :destroy
   has_many :workouts, dependent: :destroy
   has_many :challenges, through: :participations
+  has_many :orders, through: :participations
   has_one_attached :photo
   # has_many :messages
 
