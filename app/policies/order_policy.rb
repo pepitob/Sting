@@ -1,6 +1,6 @@
 class OrderPolicy < ApplicationPolicy
   def new?
-    ture
+    true
   end
 
   def show?

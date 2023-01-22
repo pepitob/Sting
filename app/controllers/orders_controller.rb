@@ -1,8 +1,6 @@
 class OrdersController < ApplicationController
   def create
     participation = Participation.find(params[:participation_id])
-    raise
-    participation = Participation.find(params[:participation_id])
     order  = Order.create!(participation: participation, amount: participation.challenge.price, state: 'pending')
 
     session = Stripe::Checkout::Session.create(
