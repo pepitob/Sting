@@ -286,6 +286,9 @@ GEM
       faraday_middleware
       hashie
     stripe (8.1.0)
+    stripe_event (2.7.0)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 9)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
@@ -350,6 +353,7 @@ DEPENDENCIES
   stimulus-rails
   strava-ruby-client
   stripe
+  stripe_event
   turbo-rails
   tzinfo-data
   web-console
