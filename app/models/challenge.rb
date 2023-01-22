@@ -13,6 +13,7 @@ class Challenge < ApplicationRecord
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  # doesn't need s cause we are calling the method?
   validate :end_date_after_start_date
   validate :start_date_after_today
   validates :goal_qty, presence: true
@@ -54,6 +55,10 @@ class Challenge < ApplicationRecord
     (((Date.today - start_date).to_i) % 7).zero?
   end
 
+  def self.set_active_flag
+    (self.active = false) if Date.today > end_date
+  end
+
   private
 
   def end_date_after_start_date
@@ -86,5 +91,4 @@ class Challenge < ApplicationRecord
   #     end
   #   end
   # end
-
 end
