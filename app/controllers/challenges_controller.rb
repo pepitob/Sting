@@ -11,7 +11,7 @@ class ChallengesController < ApplicationController
         wp = WeeklyProgress.find_by(week_num: week, user_id: current_user, challenge_id: challenge.id)
         @total_balance += wp.balance
       else
-        @total_balance += challenge.price
+        @total_balance += challenge.price_cents / 100
       end
     end
   end
