@@ -34,7 +34,7 @@ class ChallengesController < ApplicationController
     if @challenge.save
       # when a user creates a challenge it creates a participation row with that user and that challenge
       @participation = Participation.create(user: current_user, challenge: @challenge)
-      redirect_to challenge_path(@challenge) # goes to show page
+      create_order # goes to show page
     else
       @challenge.start_date = @challenge.start_date
       @challenge.end_date = @challenge.end_date
@@ -75,4 +75,23 @@ class ChallengesController < ApplicationController
     params.require(:message).permit(:content)
   end
 
+  def create_order
+    participation = @participation
+    order  = Order.create!(participation: participation, amount: participation.challenge.price, state: 'pending')
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: participation.challenge.name,
+        amount: participation.challenge.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url: order_url(order),
+      cancel_url: order_url(order)
+    )
+
+    order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(order)
+  end
 end
