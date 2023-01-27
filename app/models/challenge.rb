@@ -55,8 +55,8 @@ class Challenge < ApplicationRecord
     (((Date.today - start_date).to_i) % 7).zero?
   end
 
-  def self.set_active_flag
-    (self.active = false) if Date.today > end_date
+  def is_active?
+    (Date.today < end_date)
   end
 
   private

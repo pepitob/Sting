@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_211919) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_27_122448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,7 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_211919) do
     t.bigint "user_id", null: false
     t.string "messages"
     t.integer "price_cents", default: 0, null: false
-    t.boolean "active", default: true
     t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
