@@ -339,6 +339,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  monetize
   money-rails
   openssl
   pg (~> 1.1)
