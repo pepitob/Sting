@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row justify-content-center">
-    <div class="col-12 ">
+    <div class="col-12">
       <div class="center-element">
         <h1 class="background-color-black" style="font-size:35px; margin-top:0; margin-bottom:15px;">
           <%= @challenge.name %>
@@ -11,7 +11,7 @@
 
   <%# Progress bars with avatars bootstrap %>
   <div class="row justify-content-center">
-    <div class ="col-12 ">
+    <div class ="col-12 col-lg-6">
       <div class="dashboard">
         <div class="remaining-days">
           <h1><%= (@challenge.end_date - Date.today).to_i %> days</h1>

@@ -48,7 +48,7 @@
     justify-content: center;
     align-items: center;
     margin: 0px 0px;
-    height: 110px;
+    height: fit-content;
     img {
       width: 90px;
       transform: rotate(10deg);
@@ -58,6 +58,8 @@
       text-align: center;
       margin-top: 0px;
       margin-bottom: 0px;
+
+
       //color: white;
     }
     .sting{
