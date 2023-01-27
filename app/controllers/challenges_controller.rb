@@ -3,9 +3,9 @@ class ChallengesController < ApplicationController
   def index
     @challenges = policy_scope(Challenge) # returns a Challenge.all
     @challenges = @challenges.select { |challenge| challenge.participations.any? { |participation| participation.user == current_user }}
-    @active_challenges = @challenges.select { |challenge| challenge.active? }
+    @active_challenges = @challenges.select { |challenge| challenge.is_active? }
     @total_balance = 0
-    @challenges.each do |challenge|
+    @active_challenges.each do |challenge|
       if Date.today >= challenge.start_date
         week = challenge.current_week
         wp = WeeklyProgress.find_by(week_num: week, user_id: current_user, challenge_id: challenge.id)
